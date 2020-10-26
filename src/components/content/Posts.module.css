@@ -1,0 +1,24 @@
+.content-posts {
+    color: #000;
+}
+.content-posts-new {
+    color: #000;
+}
+.content-posts-new .content-posts-new-item-img img {
+    width: 70px;
+}
+.content-posts-new .content-posts-new-item-description {
+    color: #000;
+    flex-grow: 1;
+}
+.content-posts-new .content-posts-new-item {
+    display: flex;
+    border: 1px solid #000000;
+    margin: 25px 0;
+}
+.content-posts-new .content-posts-new-item:first-child {
+    margin-top: 0;
+}
+.content-posts-new .content-posts-new-item:last-child {
+    margin-bottom: 0;
+}

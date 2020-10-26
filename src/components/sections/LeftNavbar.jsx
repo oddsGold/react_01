@@ -1,12 +1,12 @@
 import React from 'react';
-import './LeftNavbar.css';
+import leftnav from './LeftNavbar.module.css';
 
 const LeftNavbar = () => {
     return (
-        <nav className="nav">
+        <nav className={leftnav.nav}>
             <ul>
                 <li>
-                    <a href="">Profile</a>
+                    <a className={leftnav.active} href="">Profile</a>
                 </li>
                 <li>
                     <a href="">Messages</a>

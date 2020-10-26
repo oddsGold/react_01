@@ -44,6 +44,7 @@ table {
 }
 .wrapper .wrapper-row {
   display: flex;
+  padding-top: 15px;
 }
 .wrapper .wrapper-row .content {
   flex-grow: 1;

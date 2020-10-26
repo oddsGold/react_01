@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from "./components/Header";
-import LeftNavbar from "./components/LeftNavbar";
-import Profile from "./components/Profile";
+import Header from "./components/sections/Header";
+import LeftNavbar from "./components/sections/LeftNavbar";
+import Profile from "./components/content/Profile";
 
 function App() {
   return (
