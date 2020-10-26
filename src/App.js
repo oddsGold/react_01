@@ -16,9 +16,7 @@ function App() {
           <LeftNavbar />
 
           <div className="content">
-
               <Profile />
-
           </div>
 
         </div>
