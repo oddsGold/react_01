@@ -1,0 +1,15 @@
+.wrapper .header {
+    background-color: green;
+    height: 60px;
+}
+.wrapper .header a {
+    display: inline-flex;
+    height: 100%;
+    align-items: center;
+    margin: 0 50px;
+    font-size: 28px;
+    text-transform: none;
+    font-family: 'Syne Mono', monospace;
+    color: #ffffff;
+    text-decoration: none;
+}
