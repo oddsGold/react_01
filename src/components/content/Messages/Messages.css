@@ -1,0 +1,18 @@
+.messages {
+    display: flex;
+}
+.messages .messages-list {
+    flex-basis: 30%;
+}
+.messages .messages-dialogs {
+    flex-basis: 70%;
+}
+.messages .messages-dialogs .messages-dialogs-item {
+    display: flex;
+}
+.messages .messages-dialogs .messages-dialogs-item .messages-dialogs-item-icon img {
+    width: 40px;
+}
+.messages .messages-list .messages-list-item.active .messages-list-item-name p {
+    font-weight: bold;
+}

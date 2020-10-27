@@ -46,7 +46,12 @@ table {
   display: flex;
   padding-top: 15px;
 }
+.wrapper .wrapper-row .nav {
+  background-color: green;
+  margin-right:  15px;
+  min-width: 200px;
+}
 .wrapper .wrapper-row .content {
-  flex-grow: 1;
+  flex:200px 1;
 }
 
