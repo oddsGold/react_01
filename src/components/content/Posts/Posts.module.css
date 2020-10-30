@@ -22,3 +22,13 @@
 .content-posts-new .content-posts-new-item:last-child {
     margin-bottom: 0;
 }
+.content-posts .content-posts-create {
+    margin-bottom: 25px;
+}
+.content-posts .content-posts-create textarea {
+    width: 100%;
+    height: 150px;
+}
+.content-posts .content-posts-create input {
+    width: 100%;
+}

@@ -10,22 +10,8 @@ import {BrowserRouter, Switch, Route, NavLink} from "react-router-dom";
 function App() {
     return (
         <BrowserRouter>
-            <div className="wrapper">
-                <div className="container">
-                    <Header/>
-
-                    <div className="wrapper-row">
-
-                        <LeftNavbar/>
-
-                        <div className="content">
-                            <Route path="/Profile" component={Profile}/>
-                            <Route path="/Messages" component={Messages}/>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+            <Route path="/profile" component={Profile}/>
+            <Route path="/messages" component={Messages}/>
         </BrowserRouter>
     );
 }

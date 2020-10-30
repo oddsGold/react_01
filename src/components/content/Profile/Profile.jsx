@@ -1,19 +1,18 @@
 import React from "react";
 import './Profile.css';
 import Posts from "../Posts/Posts";
+import ProfileInfo from "./ProfileInfo";
+import Wrapper from "../Wrapper";
 
 const Profile = () => {
     return (
-        <div className="profile">
-            <div className="content-images">
-                <img src="https://i.ytimg.com/vi/OXuIqaeg0SI/maxresdefault.jpg" alt=""/>
-            </div>
-            <div className="content-description">
-                <p>Description</p>
-            </div>
+        <Wrapper>
+            <div className="profile">
+                <ProfileInfo />
 
-            <Posts />
-        </div>
+                <Posts />
+            </div>
+        </Wrapper>
     )
 }
 export default Profile;
