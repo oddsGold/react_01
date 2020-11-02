@@ -1,3 +1,5 @@
+import {renderTree} from "./render";
+
 let state = {
     postsMessage: [
         {
@@ -27,6 +29,18 @@ let state = {
         {id:5, massage: 'Lorem ipsum dolor ', answer: 'Are you good?'},
         {id:6, massage: 'ng elit. Facilis, unde!6', answer: 'I am fine!'},
     ]
+}
+
+export let addNewPost = (postMessage) => {
+    let newPost = {
+        id: 3,
+        img: 'https://icons.iconarchive.com/icons/diversity-avatars/avatars/1024/batman-icon.png',
+        message: postMessage
+    }
+
+    state.postsMessage.push(newPost);
+    renderTree();
+
 }
 
 export default state;

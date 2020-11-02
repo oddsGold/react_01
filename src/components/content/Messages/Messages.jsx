@@ -9,11 +9,11 @@ import state from "../../redux/state";
 const Messages = () => {
 
     let currentPersonEl = state.currentPerson.map( names =>
-        <CurrentPerson name={names.name} id={names.id}/>
+        <CurrentPerson key={names.id} name={names.name} id={names.id}/>
     )
 
     let currentDialogEl = state.currentDialog.map( dialogs =>
-        <CurrentDialog massage = {dialogs.massage} answer={dialogs.answer}/>
+        <CurrentDialog key={dialogs.id} massage = {dialogs.massage} answer={dialogs.answer}/>
     )
 
     return (
