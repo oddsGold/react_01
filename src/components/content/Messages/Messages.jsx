@@ -4,15 +4,15 @@ import './Messages.css'
 import CurrentDialog from "./CurrentDialog";
 import CurrentPerson from "./CurrnetPerson";
 import Wrapper from "../Wrapper";
-import state from "../../redux/state";
+import store from "../../redux/state";
 
 const Messages = () => {
 
-    let currentPersonEl = state.currentPerson.map( names =>
+    let currentPersonEl = store.getCurrentPerson().map( names =>
         <CurrentPerson key={names.id} name={names.name} id={names.id}/>
     )
 
-    let currentDialogEl = state.currentDialog.map( dialogs =>
+    let currentDialogEl = store.getCurrentDialog().map( dialogs =>
         <CurrentDialog key={dialogs.id} massage = {dialogs.massage} answer={dialogs.answer}/>
     )
 

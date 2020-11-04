@@ -1,16 +1,18 @@
 import React from "react";
 import NewPost from "./NewPost";
 import posts from './Posts.module.css';
-import state from "../../redux/state";
-import {addNewPost} from "../../redux/state";
+import store from "../../redux/state";
 
-const Posts = () => {
+const Posts = (prop) => {
 
     let newTextareaPost = React.createRef();
 
     let addPost = () => {
-        addNewPost(newTextareaPost.current.value);
-        newTextareaPost.current.value = '';
+        store.addNewPost();
+    }
+
+    let onPostChange = () => {
+        store.changeNewPost(newTextareaPost.current.value);
     }
 
     return (
@@ -18,12 +20,12 @@ const Posts = () => {
             <p>My posts</p>
             
             <div className={posts['content-posts-create']}>
-                <textarea ref={newTextareaPost}></textarea>
+                <textarea ref={newTextareaPost} onChange={onPostChange} value={store.getTempPost()}/>
                 <input onClick={addPost} type="submit"/>
             </div>
             
             <div className={posts["content-posts-new"]}>
-                <NewPost props={state.postsMessage} />
+                <NewPost props={store.getPost()} />
             </div>
         </div>
     )
