@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Profile from "./components/content/Profile/Profile";
 import Messages from "./components/content/Messages/Messages";
 import Index from "./components/content";
-import {BrowserRouter, Switch, Route, NavLink} from "react-router-dom";
+import {BrowserRouter, Route} from "react-router-dom";
 
 function App() {
     return (

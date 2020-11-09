@@ -16,11 +16,11 @@
 .messages .messages-dialogs .messages-dialogs-item .messages-dialogs-item-icon img {
     width: 40px;
 }
-.messages .messages-list .messages-list-item .messages-list-item-name a {
+.messages .messages-list a {
     text-decoration: none;
     color: #000000;
 }
-.messages .messages-list .messages-list-item .messages-list-item-name a.active {
+.messages .messages-list a.active {
     font-weight: bold;
 }
 .messages .messages-dialogs .messages-dialogs-item .messages-dialogs-item-text {
