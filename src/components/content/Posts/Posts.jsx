@@ -1,12 +1,10 @@
 import React from "react";
 import NewPost from "./NewPost";
 import posts from './Posts.module.css';
-import store from "../../redux/state";
-import {addNewPostActionCreator, changeNewPostActionCreator} from "../../redux/state";
+import store from "../../redux/redux-store";
+import {addNewPostActionCreator, changeNewPostActionCreator} from "../../redux/posts-reducer";
 
 const Posts = (prop) => {
-    console.log(store.getState());
-
     let newTextareaPost = React.createRef();
 
     let addPost = () => {

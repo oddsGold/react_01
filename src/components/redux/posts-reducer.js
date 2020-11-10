@@ -1,7 +1,23 @@
 const ADD_NEW_POST = 'ADD-NEW-POST';
 const CHANGE_NEW_POST = 'CHANGE-NEW-POST';
 
-function addNewPost (state){
+let initialState = {
+    tempMessage: '',
+    postsMessage: [
+        {
+            id: 1,
+            img: 'https://icons.iconarchive.com/icons/diversity-avatars/avatars/1024/batman-icon.png',
+            message: 'New post',
+        },
+        {
+            id: 2,
+            img: 'https://icons.iconarchive.com/icons/diversity-avatars/avatars/1024/batman-icon.png',
+            message: 'New post 2',
+        }
+    ],
+}
+
+function addNewPost(state) {
     let newPost = {
         id: 3,
         img: 'https://icons.iconarchive.com/icons/diversity-avatars/avatars/1024/batman-icon.png',
@@ -9,21 +25,35 @@ function addNewPost (state){
     }
     state.postsMessage.push(newPost);
     state.tempMessage = '';
-    debugger;
-    return state;
 }
-function changeNewPost (state, modifiedMessage) {
+
+function changeNewPost(state, modifiedMessage) {
     state.tempMessage = modifiedMessage;
 }
 
-const postsReducer = (state, action) => {
-    if(action.type === 'ADD-NEW-POST'){
-        addNewPost(state);
-    }else if (action.type === 'CHANGE-NEW-POST'){
-        changeNewPost(state, action.text);
+const postsReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case ADD_NEW_POST:
+            addNewPost(state);
+            return state;
+        case CHANGE_NEW_POST:
+            changeNewPost(state, action.text);
+            return state;
+        default:
+            return state;
     }
+}
 
-    return state;
+export const addNewPostActionCreator = () => {
+    return {
+        type: ADD_NEW_POST
+    }
+}
+export const changeNewPostActionCreator = (modifiedMessage) => {
+    return {
+        type: CHANGE_NEW_POST,
+        text: modifiedMessage
+    }
 }
 
 export default postsReducer;

@@ -1,11 +1,6 @@
 import postsReducer from "./posts-reducer";
 import dialogsReducer from "./dialogs-reducer";
 
-const ADD_NEW_POST = 'ADD-NEW-POST';
-const CHANGE_NEW_POST = 'CHANGE-NEW-POST';
-const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
-const CHANGE_NEW_MESSAGE = 'CHANGE-NEW-MESSAGE';
-
 let store = {
     _state: {
         profilePage: {
@@ -59,29 +54,6 @@ let store = {
         this.renderTree();
     }
 
-}
-
-export const addNewPostActionCreator = () => {
-    return {
-        type: ADD_NEW_POST
-    }
-}
-export const changeNewPostActionCreator = (modifiedMessage) => {
-    return {
-        type: CHANGE_NEW_POST,
-        text: modifiedMessage
-    }
-}
-export const addNewMessageActionCreator = () => {
-    return {
-        type: ADD_NEW_MESSAGE
-    }
-}
-export const changeNewMessageActionCreator = (message) => {
-    return {
-        type: CHANGE_NEW_MESSAGE,
-        text: message
-    }
 }
 
 export default store;

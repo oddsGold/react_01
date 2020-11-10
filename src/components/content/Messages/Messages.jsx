@@ -3,13 +3,10 @@ import './Messages.css'
 import CurrentDialog from "./CurrentDialog";
 import CurrentPerson from "./CurrnetPerson";
 import Wrapper from "../Wrapper";
-import store from "../../redux/state";
-import {addNewMessageActionCreator, changeNewMessageActionCreator} from "../../redux/state";
+import store from "../../redux/redux-store";
+import {addNewMessageActionCreator, changeNewMessageActionCreator} from "../../redux/dialogs-reducer";
 
 const Messages = (props) => {
-
-    console.log(store.getState().dialogsPage);
-
     let newTextareaMessage = React.createRef();
 
     let addMessage = () => {
@@ -18,14 +15,6 @@ const Messages = (props) => {
     let onMessageChange = () => {
         store.dispatch(changeNewMessageActionCreator(newTextareaMessage.current.value));
     }
-
-    // let currentPersonEl = store.getState().dialogsPage.currentPerson.map((names, i) => (
-    //     <CurrentPerson key={i} name={names.name} id={names.id}/>
-    // ))
-
-    // let currentDialogEl = store.getState().dialogsPage.currentDialog.map( (dialogs,  i) => (
-    //     <CurrentDialog key={i} massage={dialogs.massage} answer={dialogs.answer} />
-    // ))
 
     return (
         <Wrapper>
