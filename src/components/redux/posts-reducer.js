@@ -2,7 +2,7 @@ const ADD_NEW_POST = 'ADD-NEW-POST';
 const CHANGE_NEW_POST = 'CHANGE-NEW-POST';
 
 let initialState = {
-    tempMessage: '',
+    tempMessage: 'dfgdfgdf',
     postsMessage: [
         {
             id: 1,

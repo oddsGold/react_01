@@ -1,8 +1,8 @@
 import React from "react";
 import './Profile.css';
-import Posts from "../Posts/Posts";
 import ProfileInfo from "./ProfileInfo";
 import Wrapper from "../Wrapper";
+import PostsContainer from "../Posts/PostsContainer";
 
 const Profile = () => {
     return (
@@ -10,7 +10,7 @@ const Profile = () => {
             <div className="profile">
                 <ProfileInfo />
 
-                <Posts />
+                <PostsContainer />
             </div>
         </Wrapper>
     )
