@@ -3,11 +3,14 @@ import * as serviceWorker from './serviceWorker';
 import ReactDOM from "react-dom";
 import App from "./App";
 import store from "./components/redux/redux-store";
+import StoreContext from "./storeContext";
 
 let renderTree = () => {
     ReactDOM.render(
         <React.StrictMode>
-            <App />
+            <StoreContext.Provider value={store}>
+                <App />
+            </StoreContext.Provider>
         </React.StrictMode>,
         document.getElementById('root')
     );
@@ -17,8 +20,7 @@ let renderTree = () => {
 renderTree(store.getState());
 
 store.subscribe(() => {
-    let state = store.getState();
-    renderTree(state);
+    renderTree();
 })
 
 // If you want your app to work offline and load faster, you can change

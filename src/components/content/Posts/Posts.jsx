@@ -1,7 +1,6 @@
 import React from "react";
 import NewPost from "./NewPost";
 import posts from './Posts.module.css';
-import store from "../../redux/redux-store";
 
 const Posts = (props) => {
     let newTextareaPost = React.createRef();

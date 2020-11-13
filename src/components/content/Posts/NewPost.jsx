@@ -2,7 +2,6 @@ import React from "react";
 import posts from './Posts.module.css';
 
 const NewPost = (props) => {
-    // console.log(props);
 
     return (
         <>
