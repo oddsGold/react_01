@@ -23,22 +23,25 @@ function addNewPost(state) {
         img: 'https://icons.iconarchive.com/icons/diversity-avatars/avatars/1024/batman-icon.png',
         message: state.tempMessage
     }
-    state.postsMessage.push(newPost);
-    state.tempMessage = '';
+    let stateCopy = {...state};
+    stateCopy.postsMessage = [...state.postsMessage];
+    stateCopy.postsMessage.push(newPost);
+    stateCopy.tempMessage = '';
+    return stateCopy;
 }
 
 function changeNewPost(state, modifiedMessage) {
-    state.tempMessage = modifiedMessage;
+    let stateCopy = {...state};
+    stateCopy.tempMessage = modifiedMessage;
+    return stateCopy;
 }
 
 const postsReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_NEW_POST:
-            addNewPost(state);
-            return state;
+            return addNewPost(state);
         case CHANGE_NEW_POST:
-            changeNewPost(state, action.text);
-            return state;
+            return changeNewPost(state, action.text);
         default:
             return state;
     }

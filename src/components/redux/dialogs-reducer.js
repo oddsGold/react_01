@@ -27,23 +27,26 @@ function addNewMessage(state) {
         massage: state.tempMessage,
         answer: 'I am fine!'
     }
-    state.currentDialog.push(newMess);
-    state.tempMessage = '';
-    return state;
+    let stateCopy = {...state};
+    stateCopy.currentPerson = [...state.currentPerson];
+    stateCopy.currentDialog = [...state.currentDialog];
+    stateCopy.currentDialog.push(newMess);
+    stateCopy.tempMessage = '';
+    return stateCopy;
 }
 
 function changeNewMessage(state, message) {
-    state.tempMessage = message;
+    let stateCopy = {...state};
+    stateCopy.tempMessage = message;
+    return stateCopy;
 }
 
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_NEW_MESSAGE:
-            addNewMessage(state);
-            return state;
+            return addNewMessage(state);
         case CHANGE_NEW_MESSAGE:
-            changeNewMessage(state, action.text);
-            return state;
+            return changeNewMessage(state, action.text);
         default:
             return state;
     }

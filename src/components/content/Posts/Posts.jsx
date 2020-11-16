@@ -6,11 +6,13 @@ const Posts = (props) => {
     let newTextareaPost = React.createRef();
 
     let onAddPost = () => {
+        // console.log(props.addPost())
         props.addPost();
     }
 
     let onPostChange = () => {
-        props.changeNewPost(newTextareaPost.current.value)
+        // console.log(props.postChange(newTextareaPost.current.value))
+        props.postChange(newTextareaPost.current.value)
     }
 
 
@@ -20,12 +22,12 @@ const Posts = (props) => {
             <p>My posts</p>
             
             <div className={posts['content-posts-create']}>
-                <textarea ref={newTextareaPost} onChange={onPostChange} value={props.setPost().tempMessage}/>
+                <textarea ref={newTextareaPost} onChange={onPostChange} value={props.tempMessage}/>
                 <input onClick={onAddPost} type="submit"/>
             </div>
             
             <div className={posts["content-posts-new"]}>
-                <NewPost props={props.setPost().postsMessage} />
+                <NewPost props={props.posts} />
             </div>
         </div>
     )
