@@ -5,6 +5,7 @@ import Profile from "./components/content/Profile/Profile";
 import Index from "./components/content";
 import {BrowserRouter, Route} from "react-router-dom";
 import MessagesContainer from "./components/content/Messages/MessagesContainer";
+import UsersContainer from "./components/content/Users/UsersContainer";
 
 function App() {
     return (
@@ -12,6 +13,7 @@ function App() {
             <Route exact path="/" component={Index}/>
             <Route path="/profile" component={Profile}/>
             <Route path="/messages" component={MessagesContainer}/>
+            <Route path="/users" component={UsersContainer}/>
         </BrowserRouter>
     );
 }
