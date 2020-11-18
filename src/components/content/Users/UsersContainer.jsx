@@ -11,7 +11,7 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        singUser: (userId) => {
+        signUser: (userId) => {
             dispatch(signNewUserActionCreator(userId));
         },
         unsignUser: (userId) => {

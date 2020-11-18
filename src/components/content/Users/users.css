@@ -1,0 +1,35 @@
+.users .users-list-item-row {
+    display: flex;
+    margin-bottom: 25px;
+}
+.users .users-list-item-row .users-list-item-row-link {
+    width: 20%;
+}
+.users-list-item-row-link-icon img {
+    width: 100%;
+}
+.users .users-list-item-row .users-list-item-row-link .users-list-item-row-link-btn {
+    background-color: green;
+    margin: 0 20px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+}
+.users .users-list-item-row .users-list-item-row-info {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    border: 1px solid gray;
+    border-radius: 6px;
+    padding: 25px;
+    font-size: 18px;
+}
+.users .users-list-item-row .users-list-item-row-info .users-list-item-row-info-left,
+.users .users-list-item-row .users-list-item-row-info .users-list-item-row-info-right {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

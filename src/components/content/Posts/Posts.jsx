@@ -6,12 +6,10 @@ const Posts = (props) => {
     let newTextareaPost = React.createRef();
 
     let onAddPost = () => {
-        // console.log(props.addPost())
         props.addPost();
     }
 
     let onPostChange = () => {
-        // console.log(props.postChange(newTextareaPost.current.value))
         props.postChange(newTextareaPost.current.value)
     }
 

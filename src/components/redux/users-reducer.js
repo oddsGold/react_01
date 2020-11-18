@@ -4,52 +4,7 @@ const SET_USERS = 'SET_USERS';
 
 
 let initialState = {
-    listUsers: [
-        {
-            id: 1,
-            follower: false,
-            fullName: 'Dmitrii',
-            status: 'Don\'t push me',
-            location: {
-                country: 'Ukraine',
-                city: 'Kyiv'
-            },
-            img: 'https://icons.iconarchive.com/icons/diversity-avatars/avatars/1024/batman-icon.png',
-        },
-        {
-            id: 2,
-            follower: true,
-            fullName: 'Nastya',
-            status: 'Don\'t push me 2',
-            location: {
-                country: 'Belarus',
-                city: 'Minsk'
-            },
-            img: 'https://icons.iconarchive.com/icons/diversity-avatars/avatars/1024/batman-icon.png',
-        },
-        {
-            id: 3,
-            follower: false,
-            fullName: 'Yasha',
-            status: 'Don\'t push me',
-            location: {
-                country: 'Sri-Lanka',
-                city: 'Colombo'
-            },
-            img: 'https://icons.iconarchive.com/icons/diversity-avatars/avatars/1024/batman-icon.png',
-        },
-        {
-            id: 4,
-            follower: true,
-            fullName: 'Dmitrii 2',
-            status: 'Don\'t push me 2',
-            location: {
-                country: 'Ukraine',
-                city: 'Kyiv'
-            },
-            img: 'https://icons.iconarchive.com/icons/diversity-avatars/avatars/1024/batman-icon.png',
-        },
-    ],
+    listUsers: []
 }
 
 function followNewUser (state, userId) {
@@ -59,7 +14,7 @@ function followNewUser (state, userId) {
             if(user.id === userId) {
                 return {
                     ...user,
-                    follower: true
+                    followed: true
                 }
             }
             return user;
@@ -74,7 +29,7 @@ function unfollowNewUser (state, userId) {
             if(user.id === userId) {
                 return {
                     ...user,
-                    follower: false
+                    followed: false
                 }
             }
             return user;
