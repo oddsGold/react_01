@@ -1,10 +1,15 @@
 const SIGN_NEW_USER = 'SIGN-NEW-USER';
 const UNSIGN_NEW_USER = 'UNSIGN-NEW-USER';
 const SET_USERS = 'SET_USERS';
+const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
+const SET_USERS_COUNT = 'SET-USERS-COUNT';
 
 
 let initialState = {
-    listUsers: []
+    listUsers: [],
+    pageSize: 10, //количество пользователей для отображения на одной страницы
+    totalUsersCount: 0, //полное количество юзеров
+    currentPage: 1 //текущая страница
 }
 
 function followNewUser (state, userId) {
@@ -40,7 +45,14 @@ function unfollowNewUser (state, userId) {
 function setUsers (state,  users) {
     return {
         ...state,
-        listUsers: [...state.listUsers, ...users]
+        listUsers: users
+    }
+}
+
+function setCurrentPage(state, currentPage){
+    return {
+        ...state,
+        currentPage: currentPage
     }
 }
 
@@ -52,6 +64,13 @@ const usersReducer = (state = initialState, action) => {
             return unfollowNewUser(state, action.userId);
         case SET_USERS:
             return setUsers(state, action.users);
+        case SET_CURRENT_PAGE:
+            return setCurrentPage(state, action.currentPage);
+        case SET_USERS_COUNT:
+            return {
+                ...state,
+                totalUsersCount: action.usersCount
+            }
         default: return state;
     }
 }
@@ -74,6 +93,20 @@ export const setUsersActionCreator = (users) => {
     return {
         type: SET_USERS,
         users: users
+    }
+}
+
+export const setCurrentPageCreator = (currentPage) => {
+    return {
+        type: SET_CURRENT_PAGE,
+        currentPage: currentPage
+    }
+}
+
+export const setUsersCountActionCreator = (count) => {
+    return{
+        type: SET_USERS_COUNT,
+        usersCount: count
     }
 }
 

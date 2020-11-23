@@ -33,3 +33,32 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
+/*My pagination*/
+.pagination {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 30px 0;
+}
+.pagination > span {
+    min-width: 47px;
+    padding: 5px;
+    border: 1px solid red;
+    border-radius: 3px;
+    line-height: 1;
+    margin: 2px;
+    cursor: pointer;
+    text-align: center;
+}
+.pagination .selected-page{
+    font-weight: bold;
+}
+
+/*react-js-pagination*/
+.pagination li {
+    margin: 7px;
+}
+.pagination li.active {
+    font-weight: bold;
+}

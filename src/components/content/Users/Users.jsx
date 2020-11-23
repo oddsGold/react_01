@@ -1,24 +1,33 @@
 import React from "react";
-import './users.css'
 import Wrapper from "../Wrapper";
+import Pagination from "react-js-pagination";
 import UsersList from "./UsersList";
-import axios from "axios";
 
-const Users = (props) => {
+let Users = (props) => {
 
-    if(props.listUsers.length === 0) {
-        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
-            props.setUsers(response.data.items)
-        })
-    }
+    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize); //количество страниц при пагинации
 
-    return(
+    return (
         <Wrapper>
             <div className="users">
                 <div className="users-title">
                     <h1>Users</h1>
                 </div>
-                <UsersList props={props.listUsers} sign={props.signUser} unsign={props.unsignUser}/>
+
+                <Pagination
+                    activePage={props.activePage}
+                    itemsCountPerPage={10}
+                    totalItemsCount={props.totalUsersCount}
+                    pageRangeDisplayed={5}
+                    onChange={props.handlePageChange}
+                />
+
+                <UsersList
+                    props={props.listUsers}
+                    sign={props.signUser}
+                    unsign={props.unsignUser}
+                    pagesCount={pagesCount}
+                />
             </div>
         </Wrapper>
     )
