@@ -3,13 +3,15 @@ const UNSIGN_NEW_USER = 'UNSIGN-NEW-USER';
 const SET_USERS = 'SET_USERS';
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
 const SET_USERS_COUNT = 'SET-USERS-COUNT';
+const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
 
 
 let initialState = {
     listUsers: [],
     pageSize: 10, //количество пользователей для отображения на одной страницы
     totalUsersCount: 0, //полное количество юзеров
-    currentPage: 1 //текущая страница
+    // currentPage: 1, //текущая страница,
+    isFetching: false
 }
 
 function followNewUser (state, userId) {
@@ -71,6 +73,11 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 totalUsersCount: action.usersCount
             }
+        case TOGGLE_IS_FETCHING:
+            return {
+                ...state,
+                isFetching: action.isFetching
+            }
         default: return state;
     }
 }
@@ -107,6 +114,13 @@ export const setUsersCountActionCreator = (count) => {
     return{
         type: SET_USERS_COUNT,
         usersCount: count
+    }
+}
+
+export const setIsFetchingActionCreator = (isFetching) => {
+    return {
+        type: TOGGLE_IS_FETCHING,
+        isFetching: isFetching
     }
 }
 

@@ -4,12 +4,10 @@ import Pagination from "react-js-pagination";
 import UsersList from "./UsersList";
 
 let Users = (props) => {
-
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize); //количество страниц при пагинации
 
     return (
-        <Wrapper>
-            <div className="users">
+            <>
                 <div className="users-title">
                     <h1>Users</h1>
                 </div>
@@ -24,12 +22,11 @@ let Users = (props) => {
 
                 <UsersList
                     props={props.listUsers}
-                    sign={props.signUser}
-                    unsign={props.unsignUser}
+                    sign={props.sign}
+                    unsign={props.unsign}
                     pagesCount={pagesCount}
                 />
-            </div>
-        </Wrapper>
+            </>
     )
 }
 

@@ -1,3 +1,6 @@
+.users {
+    position: relative;
+}
 .users .users-list-item-row {
     display: flex;
     margin-bottom: 25px;
@@ -61,4 +64,12 @@
 }
 .pagination li.active {
     font-weight: bold;
+}
+
+.users .preloader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 150px;
+    height: 150px;
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import {NavLink} from "react-router-dom";
 import './users.css'
 
 let UsersList = (props) => {
@@ -14,11 +15,13 @@ let UsersList = (props) => {
                         <div className="users-list-item" key={user.id}>
                             <div className="users-list-item-row">
                                 <div className="users-list-item-row-link">
-                                    <div className="users-list-item-row-link-icon">
-                                        <img
-                                            src={user.photos.small != null ? user.photos.small : "https://icons.iconarchive.com/icons/diversity-avatars/avatars/1024/batman-icon.png"}
-                                            alt=""/>
-                                    </div>
+                                    <NavLink to={'/profile/'+user.id}>
+                                        <div className="users-list-item-row-link-icon">
+                                            <img
+                                                src={user.photos.small != null ? user.photos.small : "https://icons.iconarchive.com/icons/diversity-avatars/avatars/1024/batman-icon.png"}
+                                                alt=""/>
+                                        </div>
+                                    </NavLink>
                                     <div className="users-list-item-row-link-btn">
                                         {user.followed ? <p onClick={() => {
                                             props.unsign(user.id)
