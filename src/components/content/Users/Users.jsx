@@ -1,5 +1,4 @@
 import React from "react";
-import Wrapper from "../Wrapper";
 import Pagination from "react-js-pagination";
 import UsersList from "./UsersList";
 

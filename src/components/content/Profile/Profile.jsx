@@ -4,11 +4,11 @@ import ProfileInfo from "./ProfileInfo";
 import Wrapper from "../Wrapper";
 import PostsContainer from "../Posts/PostsContainer";
 
-const Profile = () => {
+let Profile = (props) => {
     return (
         <Wrapper>
             <div className="profile">
-                <ProfileInfo />
+                <ProfileInfo profile={props.userProfile} />
 
                 <PostsContainer />
             </div>

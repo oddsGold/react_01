@@ -1,5 +1,6 @@
 const ADD_NEW_POST = 'ADD-NEW-POST';
 const CHANGE_NEW_POST = 'CHANGE-NEW-POST';
+const SET_USER_PROFILE = 'SET-USER-PROFILE';
 
 let initialState = {
     tempMessage: '',
@@ -15,6 +16,7 @@ let initialState = {
             message: 'New post 2',
         }
     ],
+    userProfile: null
 }
 
 function addNewPost(state) {
@@ -37,12 +39,22 @@ function changeNewPost(state, modifiedMessage) {
     };
 }
 
+function setUserProfile (state,  profile) {
+    // debugger;
+    return {
+        ...state,
+        userProfile: profile
+    }
+}
+
 const postsReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_NEW_POST:
             return addNewPost(state);
         case CHANGE_NEW_POST:
             return changeNewPost(state, action.text);
+        case SET_USER_PROFILE:
+            return setUserProfile(state, action.profile)
         default:
             return state;
     }
@@ -57,6 +69,12 @@ export const changeNewPostActionCreator = (modifiedMessage) => {
     return {
         type: CHANGE_NEW_POST,
         text: modifiedMessage
+    }
+}
+export const getUserProfile = (profile) => {
+    return {
+        type: SET_USER_PROFILE,
+        profile: profile
     }
 }
 
