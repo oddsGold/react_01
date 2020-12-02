@@ -1,6 +1,7 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import './users.css'
+import axios from "axios";
 
 let UsersList = (props) => {
         let pages = [];
@@ -23,11 +24,36 @@ let UsersList = (props) => {
                                         </div>
                                     </NavLink>
                                     <div className="users-list-item-row-link-btn">
-                                        {user.followed ? <p onClick={() => {
-                                            props.unsign(user.id)
-                                        }}>Follow</p> : <p onClick={() => {
-                                            props.sign(user.id)
-                                        }}>UnFollow</p>}
+                                        {user.followed
+                                            ? <p onClick={() => {
+
+                                                axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {
+                                                    withCredentials: true,
+                                                    headers: {
+                                                        "API-KEY":"2c577295-76a6-4359-90ab-7b313675fa27"
+                                                    }
+                                                }).then(response => {
+                                                    if(response.data.resultCode === 0){
+                                                        props.sign(user.id);
+                                                    }
+                                                })
+
+                                            }}>UnFollow</p>
+                                            : <p onClick={() => {
+
+                                                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {}, {
+                                                    withCredentials: true,
+                                                    headers: {
+                                                        "API-KEY":"2c577295-76a6-4359-90ab-7b313675fa27"
+                                                    }
+                                                }).then(response => {
+                                                    if(response.data.resultCode === 0){
+                                                        props.unsign(user.id);
+                                                    }
+                                                })
+
+                                            }}>Follow</p>
+                                        }
                                     </div>
                                 </div>
                                 <div className="users-list-item-row-info">

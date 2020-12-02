@@ -21,7 +21,7 @@ function followNewUser (state, userId) {
             if(user.id === userId) {
                 return {
                     ...user,
-                    followed: true
+                    followed: false
                 }
             }
             return user;
@@ -36,7 +36,7 @@ function unfollowNewUser (state, userId) {
             if(user.id === userId) {
                 return {
                     ...user,
-                    followed: false
+                    followed: true
                 }
             }
             return user;
