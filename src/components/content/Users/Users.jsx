@@ -24,6 +24,8 @@ let Users = (props) => {
                     sign={props.sign}
                     unsign={props.unsign}
                     pagesCount={pagesCount}
+                    setFollowingProgress={props.setFollowingProgress}
+                    followingProgress={props.followingProgress}
                 />
             </>
     )

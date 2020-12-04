@@ -4,6 +4,7 @@ const SET_USERS = 'SET_USERS';
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
 const SET_USERS_COUNT = 'SET-USERS-COUNT';
 const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
+const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE-IS-FOLLOWING-PROGRESS';
 
 
 let initialState = {
@@ -11,7 +12,8 @@ let initialState = {
     pageSize: 10, //количество пользователей для отображения на одной страницы
     totalUsersCount: 0, //полное количество юзеров
     // currentPage: 1, //текущая страница,
-    isFetching: false
+    isFetching: false,
+    followingProgress: []
 }
 
 function followNewUser (state, userId) {
@@ -78,6 +80,13 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 isFetching: action.isFetching
             }
+        case TOGGLE_IS_FOLLOWING_PROGRESS:
+            return {
+                ...state,
+                followingProgress: action.isFetching
+                    ? [...state.followingProgress, action.userId]
+                    : state.followingProgress.filter(id => id !== action.userId)
+            }
         default: return state;
     }
 }
@@ -121,6 +130,14 @@ export const setIsFetchingActionCreator = (isFetching) => {
     return {
         type: TOGGLE_IS_FETCHING,
         isFetching: isFetching
+    }
+}
+
+export const setFollowingProgressActionCreator = (isFetching,userId) => {
+    return {
+        type: TOGGLE_IS_FOLLOWING_PROGRESS,
+        isFetching: isFetching,
+        userId: userId
     }
 }
 

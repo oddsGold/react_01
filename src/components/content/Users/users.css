@@ -20,6 +20,17 @@
     line-height: 1;
     cursor: pointer;
 }
+.users .users-list-item-row .users-list-item-row-link .users-list-item-row-link-btn button {
+    background-color: inherit;
+    border: none;
+    width: 100%;
+    height: 100%;
+    outline: none;
+}
+.users .users-list-item-row .users-list-item-row-link .users-list-item-row-link-btn button[disabled] {
+    background-color: grey;
+    color: #ffffff;
+}
 .users .users-list-item-row .users-list-item-row-info {
     display: flex;
     justify-content: space-between;

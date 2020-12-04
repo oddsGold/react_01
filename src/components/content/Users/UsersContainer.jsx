@@ -5,14 +5,14 @@ import {
     unsignNewUserActionCreator,
     setCurrentPageCreator,
     setUsersCountActionCreator,
-    setIsFetchingActionCreator
+    setIsFetchingActionCreator,
+    setFollowingProgressActionCreator
 } from "../../redux/users-reducer";
 import {connect} from "react-redux";
-import axios from "axios";
 import Users from "./Users";
 import Wrapper from "../Wrapper";
 import Preloader from "../../sections/preloader";
-import {getUsers} from "../../api/Api";
+import {usersAPI} from "../../api/Api";
 
 class UsersContainer extends React.Component {
 
@@ -27,7 +27,7 @@ class UsersContainer extends React.Component {
         this.props.toggleIsFetching(true);
         this.setState({activePage: pageNumber});
 
-        getUsers(pageNumber, this.props.pageSize).then(data => {
+        usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
             this.props.toggleIsFetching(false);
             this.props.setUsers(data.items)
         })
@@ -36,7 +36,7 @@ class UsersContainer extends React.Component {
     componentDidMount() {
         this.props.toggleIsFetching(true);
 
-        getUsers(this.props.currentPage, this.props.pageSize).then(data => {
+        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
             this.props.toggleIsFetching(false);
             this.props.setUsers(data.items)
             this.props.setUsersCount(data.totalCount)
@@ -60,6 +60,8 @@ class UsersContainer extends React.Component {
                         totalUsersCount={this.props.totalUsersCount}
                         pageSize={this.props.pageSize}
                         handlePageChange={this.handlePageChange.bind(this)}
+                        setFollowingProgress={this.props.setFollowingProgress}
+                        followingProgress={this.props.followingProgress}
                     />
                 </div>
             </Wrapper>
@@ -73,7 +75,8 @@ let mapStateToProps = (state) => {
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        followingProgress: state.usersPage.followingProgress
     }
 }
 
@@ -86,5 +89,6 @@ export default connect(mapStateToProps,
         setUsers: setUsersActionCreator,
         setCurrentPage: setCurrentPageCreator,
         setUsersCount: setUsersCountActionCreator,
-        toggleIsFetching: setIsFetchingActionCreator
+        toggleIsFetching: setIsFetchingActionCreator,
+        setFollowingProgress: setFollowingProgressActionCreator
     })(UsersContainer);

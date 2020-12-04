@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Login from "./Login";
 import axios from "axios";
 import {connect} from "react-redux";
@@ -7,7 +7,7 @@ import {
     setCurrentUserAC
 } from "../../redux/auth-reducer";
 
-let LoginContainer = (props) => {
+function LoginContainer (props) {
 
     const getCurrentUser  = () => axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {withCredentials: true})
         .then(response => {
