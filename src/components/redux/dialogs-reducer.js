@@ -33,7 +33,6 @@ function addNewMessage(state) {
         tempMessage: ''
     };
 }
-
 function changeNewMessage(state, message) {
     return {
         ...state,
@@ -52,12 +51,12 @@ const dialogsReducer = (state = initialState, action) => {
     }
 }
 
-export const addNewMessageActionCreator = () => {
+export const addNewMessageAC = () => {
     return {
         type: ADD_NEW_MESSAGE
     }
 }
-export const changeNewMessageActionCreator = (modifiedMessage) => {
+export const changeNewMessageAC = (modifiedMessage) => {
     return {
         type: CHANGE_NEW_MESSAGE,
         text: modifiedMessage

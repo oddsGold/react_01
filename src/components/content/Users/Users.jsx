@@ -21,10 +21,9 @@ let Users = (props) => {
 
                 <UsersList
                     props={props.listUsers}
-                    sign={props.sign}
-                    unsign={props.unsign}
+                    follow={props.follow}
+                    unFollow={props.unFollow}
                     pagesCount={pagesCount}
-                    setFollowingProgress={props.setFollowingProgress}
                     followingProgress={props.followingProgress}
                 />
             </>

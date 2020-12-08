@@ -1,18 +1,18 @@
 import React, { useEffect } from "react";
 import Login from "./Login";
-import axios from "axios";
 import {connect} from "react-redux";
 import {
     setUserDataAC,
     setCurrentUserAC
 } from "../../redux/auth-reducer";
+import {usersAPI} from "../../api/Api";
 
 function LoginContainer (props) {
 
-    const getCurrentUser  = () => axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {withCredentials: true})
-        .then(response => {
-            if(response.data.resultCode === 0) {
-                let {id, email, login} = response.data.data; //деструктеризация
+    const getCurrentUser  = () => usersAPI.currentUser()
+        .then(data => {
+            if(data.resultCode === 0) {
+                let {id, email, login} = data.data; //деструктеризация
                 props.setUserDataAC(id, email, login)
             }
         })
@@ -21,9 +21,9 @@ function LoginContainer (props) {
     useEffect(() => {
         getCurrentUser();
         if (props.isAuth) {
-            axios.get(`https://social-network.samuraijs.com/api/1.0/profile/`+props.userId)
-                .then(response => {
-                    props.setCurrentUserAC(response.data.photos.small)
+            usersAPI.currentUserData(props.userId)
+                .then(data => {
+                    props.setCurrentUserAC(data.photos.small)
                 })
         }
     });

@@ -1,3 +1,5 @@
+import {usersAPI} from "../api/Api";
+
 const SIGN_NEW_USER = 'SIGN-NEW-USER';
 const UNSIGN_NEW_USER = 'UNSIGN-NEW-USER';
 const SET_USERS = 'SET_USERS';
@@ -91,16 +93,28 @@ const usersReducer = (state = initialState, action) => {
     }
 }
 
-export const signNewUserActionCreator = (userId) => {
+export const signUser = (userId) => {
     return {
         type: SIGN_NEW_USER,
         userId: userId
     }
 }
-
-export const unsignNewUserActionCreator = (userId) => {
+export const unsignUser = (userId) => {
     return {
         type: UNSIGN_NEW_USER,
+        userId: userId
+    }
+}
+export const setCurrentPageAC = (currentPage) => {
+    return {
+        type: SET_CURRENT_PAGE,
+        currentPage: currentPage
+    }
+}
+export const setFollowingProgress = (isFetching,userId) => {
+    return {
+        type: TOGGLE_IS_FOLLOWING_PROGRESS,
+        isFetching: isFetching,
         userId: userId
     }
 }
@@ -111,21 +125,12 @@ export const setUsersActionCreator = (users) => {
         users: users
     }
 }
-
-export const setCurrentPageCreator = (currentPage) => {
-    return {
-        type: SET_CURRENT_PAGE,
-        currentPage: currentPage
-    }
-}
-
 export const setUsersCountActionCreator = (count) => {
     return{
         type: SET_USERS_COUNT,
         usersCount: count
     }
 }
-
 export const setIsFetchingActionCreator = (isFetching) => {
     return {
         type: TOGGLE_IS_FETCHING,
@@ -133,12 +138,38 @@ export const setIsFetchingActionCreator = (isFetching) => {
     }
 }
 
-export const setFollowingProgressActionCreator = (isFetching,userId) => {
-    return {
-        type: TOGGLE_IS_FOLLOWING_PROGRESS,
-        isFetching: isFetching,
-        userId: userId
+export const getUresThunkCreator = (currentPage,pageSize) => {
+    return (dispatch) => {
+        dispatch(setIsFetchingActionCreator(true));
+
+        usersAPI.getUsers(currentPage, pageSize).then(data => {
+            dispatch(setIsFetchingActionCreator(false));
+            dispatch(setUsersActionCreator(data.items));
+            dispatch(setUsersCountActionCreator(data.totalCount));
+        })
     }
-}
+} //Thunk
+export const follow = (id) => {
+    return (dispatch) => {
+        dispatch(setFollowingProgress(true, id));
+        usersAPI.follow(id).then(data => {
+            if(data.resultCode === 0){
+                dispatch(unsignUser(id));
+            }
+            dispatch(setFollowingProgress(false, id));
+        })
+    }
+} //Thunk
+export const unFollow = (id) => {
+    return (dispatch) => {
+        dispatch(setFollowingProgress(true, id));
+        usersAPI.unFollow(id).then(data => {
+            if(data.resultCode === 0){
+                dispatch(signUser(id));
+            }
+            dispatch(setFollowingProgress(false, id));
+        })
+    }
+} //Thunk
 
 export default usersReducer;

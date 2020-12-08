@@ -12,7 +12,7 @@ function App() {
     return (
         <Router>
             <Route exact path="/" component={Index}/>
-            <Route exact path="/login" component={AuthForm}/>
+            <Route path="/login" component={AuthForm}/>
             <Route path='/profile/:userId?' component={ProfileContainer}/>
             <Route path="/messages" component={MessagesContainer}/>
             <Route path="/users" component={UsersContainer}/>

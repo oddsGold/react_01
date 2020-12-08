@@ -8,10 +8,10 @@ const Messages = (props) => {
     let newTextareaMessage = React.createRef();
 
     let onAddMessage = () => {
-        props.addMessage()
+        props.addNewMessageAC()
     }
     let onMessageChange = () => {
-        props.messageChange(newTextareaMessage.current.value)
+        props.changeNewMessageAC(newTextareaMessage.current.value)
     }
 
     return (

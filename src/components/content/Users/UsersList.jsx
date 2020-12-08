@@ -1,8 +1,6 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import './users.css'
-import axios from "axios";
-import {usersAPI} from "../../api/Api";
 
 let UsersList = (props) => {
         let pages = [];
@@ -27,24 +25,10 @@ let UsersList = (props) => {
                                     <div className="users-list-item-row-link-btn">
                                         {user.followed
                                             ? <button disabled={props.followingProgress.some((id) => id === user.id)} onClick={() => {
-                                                props.setFollowingProgress(true, user.id);
-                                                usersAPI.unFollow(user.id).then(data => {
-                                                    if(data.resultCode === 0){
-                                                        props.sign(user.id);
-                                                    }
-                                                    props.setFollowingProgress(false, user.id);
-                                                })
-
+                                                props.unFollow(user.id)
                                             }}>UnFollow</button>
                                             : <button disabled={props.followingProgress.some((id) => id === user.id)} onClick={() => {
-                                                props.setFollowingProgress(true, user.id);
-                                                usersAPI.follow(user.id).then(data => {
-                                                    if(data.resultCode === 0){
-                                                        props.unsign(user.id);
-                                                    }
-                                                    props.setFollowingProgress(false, user.id);
-                                                })
-
+                                                props.follow(user.id)
                                             }}>Follow</button>
                                         }
                                     </div>

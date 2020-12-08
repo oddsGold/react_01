@@ -17,7 +17,6 @@ function setUserData (state, data) {
         isAuth: true
     }
 }
-
 function setCurrentUser (state, userImg) {
     return {
         ...state,
@@ -42,13 +41,11 @@ export const setUserDataAC = (userId, email, login) => {
         data: {userId, email, login}
     }
 }
-
 export const setCurrentUserAC = (userImg) => {
     return {
         type: SET_CURRENT_USER_IMG,
         userImg: userImg
     }
 }
-
 
 export default authReducer;

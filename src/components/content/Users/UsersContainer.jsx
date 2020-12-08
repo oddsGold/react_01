@@ -1,18 +1,14 @@
 import React from "react";
 import {
-    setUsersActionCreator,
-    signNewUserActionCreator,
-    unsignNewUserActionCreator,
-    setCurrentPageCreator,
-    setUsersCountActionCreator,
-    setIsFetchingActionCreator,
-    setFollowingProgressActionCreator
+    setCurrentPageAC,
+    getUresThunkCreator,
+    follow,
+    unFollow
 } from "../../redux/users-reducer";
 import {connect} from "react-redux";
 import Users from "./Users";
 import Wrapper from "../Wrapper";
 import Preloader from "../../sections/preloader";
-import {usersAPI} from "../../api/Api";
 
 class UsersContainer extends React.Component {
 
@@ -24,23 +20,12 @@ class UsersContainer extends React.Component {
     }
 
     handlePageChange(pageNumber) {
-        this.props.toggleIsFetching(true);
         this.setState({activePage: pageNumber});
-
-        usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
-            this.props.toggleIsFetching(false);
-            this.props.setUsers(data.items)
-        })
+        this.props.getUresThunkCreator(pageNumber, this.props.pageSize);
     }
 
     componentDidMount() {
-        this.props.toggleIsFetching(true);
-
-        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-            this.props.toggleIsFetching(false);
-            this.props.setUsers(data.items)
-            this.props.setUsersCount(data.totalCount)
-        })
+        this.props.getUresThunkCreator(this.props.currentPage, this.props.pageSize);
     }
 
     render() {
@@ -53,14 +38,14 @@ class UsersContainer extends React.Component {
                     }
 
                     <Users
+                        follow={this.props.follow}
+                        unFollow={this.props.unFollow}
+
                         listUsers={this.props.listUsers}
-                        sign={this.props.signUser}
-                        unsign={this.props.unsignUser}
                         activePage={this.state.activePage}
                         totalUsersCount={this.props.totalUsersCount}
                         pageSize={this.props.pageSize}
                         handlePageChange={this.handlePageChange.bind(this)}
-                        setFollowingProgress={this.props.setFollowingProgress}
                         followingProgress={this.props.followingProgress}
                     />
                 </div>
@@ -80,15 +65,13 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {} //Можно использовать как второй параметр в connect
+let mapDispatchToProps = (dispatch) => {
+} //Можно использовать как второй параметр в connect
 
 export default connect(mapStateToProps,
     {
-        signUser: signNewUserActionCreator,
-        unsignUser: unsignNewUserActionCreator,
-        setUsers: setUsersActionCreator,
-        setCurrentPage: setCurrentPageCreator,
-        setUsersCount: setUsersCountActionCreator,
-        toggleIsFetching: setIsFetchingActionCreator,
-        setFollowingProgress: setFollowingProgressActionCreator
+        setCurrentPageAC,
+        getUresThunkCreator,
+        follow,
+        unFollow
     })(UsersContainer);
