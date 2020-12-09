@@ -40,7 +40,6 @@ class UsersContainer extends React.Component {
                     <Users
                         follow={this.props.follow}
                         unFollow={this.props.unFollow}
-
                         listUsers={this.props.listUsers}
                         activePage={this.state.activePage}
                         totalUsersCount={this.props.totalUsersCount}

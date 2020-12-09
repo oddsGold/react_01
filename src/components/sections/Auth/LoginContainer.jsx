@@ -1,34 +1,24 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import Login from "./Login";
 import {connect} from "react-redux";
 import {
-    setUserDataAC,
-    setCurrentUserAC
+    getCurrentUserTC,
+    getCurrentUserDataTC
 } from "../../redux/auth-reducer";
-import {usersAPI} from "../../api/Api";
 
-function LoginContainer (props) {
+function LoginContainer(props) {
 
-    const getCurrentUser  = () => usersAPI.currentUser()
-        .then(data => {
-            if(data.resultCode === 0) {
-                let {id, email, login} = data.data; //деструктеризация
-                props.setUserDataAC(id, email, login)
-            }
-        })
+    const getCurrentUser = () => props.getCurrentUserTC();
 
     //componentDidMount
     useEffect(() => {
         getCurrentUser();
         if (props.isAuth) {
-            usersAPI.currentUserData(props.userId)
-                .then(data => {
-                    props.setCurrentUserAC(data.photos.small)
-                })
+            props.getCurrentUserDataTC(props.userId);
         }
     });
 
-    return(
+    return (
         <Login {...props} />
     )
 }
@@ -44,7 +34,7 @@ let mapStateToProps = (state) => {
 
 export default connect(mapStateToProps,
     {
-        setUserDataAC: setUserDataAC,
-        setCurrentUserAC: setCurrentUserAC
+        getCurrentUserTC,
+        getCurrentUserDataTC
     })(LoginContainer);
 

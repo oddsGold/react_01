@@ -1,3 +1,5 @@
+import {usersAPI} from "../api/Api";
+
 const ADD_NEW_POST = 'ADD-NEW-POST';
 const CHANGE_NEW_POST = 'CHANGE-NEW-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
@@ -60,12 +62,12 @@ const postsReducer = (state = initialState, action) => {
     }
 }
 
-export const addNewPostActionCreator = () => {
+export const addPost = () => {
     return {
         type: ADD_NEW_POST
     }
 }
-export const changeNewPostActionCreator = (modifiedMessage) => {
+export const postChange = (modifiedMessage) => {
     return {
         type: CHANGE_NEW_POST,
         text: modifiedMessage
@@ -77,5 +79,13 @@ export const getUserProfile = (profile) => {
         profile: profile
     }
 }
+
+export const usersProfileTC = (id) => {
+    return (dispatch) => {
+        usersAPI.usersProfile(id).then(data => {
+            dispatch(getUserProfile(data));
+        })
+    }
+} //Thunk Creator
 
 export default postsReducer;

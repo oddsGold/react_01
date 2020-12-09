@@ -1,8 +1,18 @@
 import React from "react";
 import Posts from "./Posts";
-import {addNewPostActionCreator, changeNewPostActionCreator} from "../../redux/posts-reducer";
+import {addPost, postChange} from "../../redux/posts-reducer";
 import {connect} from "react-redux";
 
+function PostsContainer (props) {
+    return (
+        <Posts
+            addPost={props.addPost}
+            postChange={props.postChange}
+            tempMessage={props.tempMessage}
+            posts={props.posts}
+        />
+    )
+}
 
 let mapStateToProps = (state) => {
     return {
@@ -11,17 +21,7 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        addPost: () => {
-            dispatch(addNewPostActionCreator());
-        },
-        postChange: (text) => {
-            dispatch(changeNewPostActionCreator(text));
-        }
-    }
-}
-
-const PostsContainer = connect(mapStateToProps, mapDispatchToProps)(Posts);
-
-export default PostsContainer;
+export default connect(mapStateToProps, {
+    addPost,
+    postChange
+})(PostsContainer);

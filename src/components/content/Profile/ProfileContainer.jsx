@@ -1,9 +1,8 @@
 import React, {useEffect} from "react";
-import {getUserProfile} from "../../redux/posts-reducer";
+import {usersProfileTC} from "../../redux/posts-reducer";
 import Profile from "./Profile";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
-import {usersAPI} from "../../api/Api";
 
 function ProfileContainer(props) {
 
@@ -12,9 +11,7 @@ function ProfileContainer(props) {
         if (!id) {
             id = 13006;
         }
-        usersAPI.usersProfile(id).then(data => {
-            props.getUserProfile(data)
-        })
+        props.usersProfileTC(id);
     })
 
     return (
@@ -35,5 +32,5 @@ let mapStateToProps = (state) => {
 let UrlDataComponent = withRouter(ProfileContainer);
 
 export default connect(mapStateToProps, {
-    getUserProfile
+    usersProfileTC
 })(UrlDataComponent);
