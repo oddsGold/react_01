@@ -19,7 +19,7 @@ function LoginContainer(props) {
     });
 
     return (
-        <Login {...props} />
+        <Login {...props} userImg={props.userImg} />
     )
 }
 

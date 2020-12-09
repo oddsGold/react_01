@@ -3,8 +3,16 @@ import './Messages.css'
 import CurrentDialog from "./CurrentDialog";
 import CurrentPerson from "./CurrnetPerson";
 import Wrapper from "../Wrapper";
+import {Redirect} from 'react-router-dom'
+
 
 const Messages = (props) => {
+    if (!props.isAuth) {
+        return (
+            <Redirect to={"/login"}/>
+        )
+    }
+
     let newTextareaMessage = React.createRef();
 
     let onAddMessage = () => {
@@ -18,7 +26,7 @@ const Messages = (props) => {
         <Wrapper>
             <div className="messages">
                 <div className="messages-list">
-                    <CurrentPerson props={props.dialogsPage.currentPerson} />
+                    <CurrentPerson props={props.dialogsPage.currentPerson}/>
                 </div>
                 <div className="messages-dialogs">
                     <CurrentDialog props={props.dialogsPage.currentDialog}/>

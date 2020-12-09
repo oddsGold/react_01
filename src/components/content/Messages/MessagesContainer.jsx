@@ -11,13 +11,15 @@ function MessagesContainer (props) {
             dialogsPage={props.dialogsPage}
             addNewMessageAC={props.addNewMessageAC}
             changeNewMessageAC={props.changeNewMessageAC}
+            isAuth={props.isAuth}
         />
     )
 }
 
 let mapStateToProps = (state) => {
     return {
-        dialogsPage: state.dialogsPage
+        dialogsPage: state.dialogsPage,
+        isAuth: state.auth.isAuth
     }
 }
 

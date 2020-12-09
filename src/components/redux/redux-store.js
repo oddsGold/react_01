@@ -3,6 +3,7 @@ import dialogsReducer from "./dialogs-reducer";
 import postsReducer from "./posts-reducer";
 import usersReducer from "./users-reducer";
 import authReducer from "./auth-reducer";
+import navbarReducer from "./navbar-reducer";
 import thunkMiddleware from "redux-thunk";
 
 let reducers = combineReducers({
@@ -10,6 +11,7 @@ let reducers = combineReducers({
     dialogsPage: dialogsReducer,
     usersPage: usersReducer,
     auth: authReducer,
+    navbar: navbarReducer
 });
 
 let store = createStore(reducers, applyMiddleware(thunkMiddleware));

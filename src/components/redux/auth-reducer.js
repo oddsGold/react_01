@@ -9,7 +9,7 @@ let initialState = {
     email: null,
     login: null,
     isAuth: false, //не залогинен -> true - залогинен
-    currentUserImg: ''
+    currentUserImg: null
 }
 
 function setUserData (state, data) {
@@ -22,7 +22,7 @@ function setUserData (state, data) {
 function setCurrentUser (state, userImg) {
     return {
         ...state,
-        currentUser: userImg
+        currentUserImg: userImg
     }
 }
 

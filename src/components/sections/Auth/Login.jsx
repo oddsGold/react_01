@@ -3,9 +3,20 @@ import '../Header.css';
 import {NavLink} from "react-router-dom";
 
 const Login = (props) => {
+    let loginButton;
+    if (!props.isAuth) {
+        loginButton = '';
+    } else {
+        if (props.userImg === null) {
+            loginButton = <img src='https://cdn.onlinewebfonts.com/svg/img_131793.png' alt=""/>;
+        }else {
+            loginButton = <img src={props.userImg} alt=""/>;
+        }
+    }
+
     return (
         <div className="login">
-            <img src={props.userImg ? null : 'https://cdn.onlinewebfonts.com/svg/img_131793.png'} alt=""/>
+            {loginButton}
             {
                 props.isAuth ? 'Your login:'+props.login : <NavLink to={'/login'}>Login</NavLink>
             }

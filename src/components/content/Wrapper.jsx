@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../sections/Header";
-import LeftNavbar from "../sections/LeftNavbar";
+import LeftNavbarContainer from "../sections/Navbar/LeftNavbarContainer";
 
 const Wrapper = (props) => {
     return(
@@ -10,7 +10,7 @@ const Wrapper = (props) => {
 
                 <div className="wrapper-row">
 
-                    <LeftNavbar/>
+                    <LeftNavbarContainer />
 
                     <div className="content">
                         { props.children }
