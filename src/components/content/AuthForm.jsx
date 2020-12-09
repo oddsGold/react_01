@@ -4,7 +4,7 @@ import Wrapper from "./Wrapper";
 function AuthForm(props) {
     return (
         <Wrapper>
-            <p>Form</p>
+            <p>Login form</p>
         </Wrapper>
     )
 }

@@ -18,6 +18,7 @@ function ProfileContainer(props) {
         <Profile
             {...props}
             userProfile={props.userProfile}
+            isAuth={props.isAuth}
         />
     )
 
@@ -25,7 +26,8 @@ function ProfileContainer(props) {
 
 let mapStateToProps = (state) => {
     return {
-        userProfile: state.profilePage.userProfile
+        userProfile: state.profilePage.userProfile,
+        isAuth: state.auth.isAuth
     }
 }
 
