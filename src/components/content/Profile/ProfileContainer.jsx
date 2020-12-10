@@ -3,6 +3,8 @@ import {usersProfileTC} from "../../redux/posts-reducer";
 import Profile from "./Profile";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
+import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
+import {compose} from "redux";
 
 function ProfileContainer(props) {
 
@@ -24,15 +26,19 @@ function ProfileContainer(props) {
 
 }
 
+// let AuthRedirectComponent = withAuthRedirect(ProfileContainer); //HOC
+
 let mapStateToProps = (state) => {
     return {
         userProfile: state.profilePage.userProfile,
-        isAuth: state.auth.isAuth
     }
 }
+// let UrlDataComponent = withRouter(AuthRedirectComponent); //Возвращает в ответе параметры для отслеживания URL - match->params
 
-let UrlDataComponent = withRouter(ProfileContainer);
-
-export default connect(mapStateToProps, {
-    usersProfileTC
-})(UrlDataComponent);
+export default compose(
+    connect(mapStateToProps, {
+        usersProfileTC
+    }),
+    withRouter
+    // withAuthRedirect
+)(ProfileContainer);

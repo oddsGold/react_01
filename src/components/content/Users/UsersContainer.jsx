@@ -9,6 +9,8 @@ import {connect} from "react-redux";
 import Users from "./Users";
 import Wrapper from "../Wrapper";
 import Preloader from "../../sections/preloader";
+import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
+import {compose} from "redux";
 
 class UsersContainer extends React.Component {
 
@@ -67,10 +69,13 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
 } //Можно использовать как второй параметр в connect
 
-export default connect(mapStateToProps,
-    {
-        setCurrentPageAC,
-        getUresThunkCreator,
-        follow,
-        unFollow
-    })(UsersContainer);
+export default compose(
+    connect(mapStateToProps,
+        {
+            setCurrentPageAC,
+            getUresThunkCreator,
+            follow,
+            unFollow
+        }),
+    withAuthRedirect
+)(UsersContainer);

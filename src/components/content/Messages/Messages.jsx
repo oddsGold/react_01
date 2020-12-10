@@ -3,16 +3,9 @@ import './Messages.css'
 import CurrentDialog from "./CurrentDialog";
 import CurrentPerson from "./CurrnetPerson";
 import Wrapper from "../Wrapper";
-import {Redirect} from 'react-router-dom'
 
 
 const Messages = (props) => {
-    if (!props.isAuth) {
-        return (
-            <Redirect to={"/login"}/>
-        )
-    }
-
     let newTextareaMessage = React.createRef();
 
     let onAddMessage = () => {

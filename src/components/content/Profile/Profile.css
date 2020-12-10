@@ -2,3 +2,12 @@
     width: 100%;
     height: 150px;
 }
+.wrapper .wrapper-row .content .profile .profileinfo-status {
+    margin: 25px 0;
+}
+.wrapper .wrapper-row .content .profile .profileinfo-status .profileinfo-status-item {
+    /*display: flex;*/
+}
+.wrapper .wrapper-row .content .profile .profileinfo-status .profileinfo-status-item > div:first-child {
+    padding-right: 10px;
+}

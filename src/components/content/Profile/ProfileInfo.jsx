@@ -1,6 +1,7 @@
 import React from "react";
 import '../Users/users.css'
 import Preloader from "../../sections/preloader";
+import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = (props) => {
 
@@ -12,6 +13,9 @@ const ProfileInfo = (props) => {
         <div className="profileinfo">
             <div className="content-images">
                 <img src="https://i.ytimg.com/vi/OXuIqaeg0SI/maxresdefault.jpg" alt=""/>
+            </div>
+            <div className="profileinfo-status">
+                <ProfileStatus status={"Hello"} />
             </div>
             <div className="content-description">
                 <div className="content-description-profile">
