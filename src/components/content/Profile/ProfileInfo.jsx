@@ -15,7 +15,7 @@ const ProfileInfo = (props) => {
                 <img src="https://i.ytimg.com/vi/OXuIqaeg0SI/maxresdefault.jpg" alt=""/>
             </div>
             <div className="profileinfo-status">
-                <ProfileStatus status={"Hello"} />
+                <ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus}/>
             </div>
             <div className="content-description">
                 <div className="content-description-profile">

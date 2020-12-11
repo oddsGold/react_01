@@ -8,7 +8,7 @@ let Profile = (props) => {
     return (
         <Wrapper>
             <div className="profile">
-                <ProfileInfo profile={props.userProfile} />
+                <ProfileInfo profile={props.userProfile} status={props.status} updateUserStatus={props.updateUserStatus}/>
 
                 <PostsContainer />
             </div>

@@ -3,6 +3,7 @@ import {usersAPI} from "../api/Api";
 const ADD_NEW_POST = 'ADD-NEW-POST';
 const CHANGE_NEW_POST = 'CHANGE-NEW-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
+const SET_STATUS = 'SET_STATUS';
 
 let initialState = {
     tempMessage: '',
@@ -18,7 +19,8 @@ let initialState = {
             message: 'New post 2',
         }
     ],
-    userProfile: null
+    userProfile: null,
+    status: ''
 }
 
 function addNewPost(state) {
@@ -57,6 +59,18 @@ const postsReducer = (state = initialState, action) => {
             return changeNewPost(state, action.text);
         case SET_USER_PROFILE:
             return setUserProfile(state, action.profile)
+        case SET_STATUS:
+            if (action.status === null || action.status === "") {
+                return {
+                    ...state,
+                    status: 'Status is null'
+                }
+            }else {
+                return {
+                    ...state,
+                    status: action.status
+                }
+            }
         default:
             return state;
     }
@@ -79,6 +93,12 @@ export const getUserProfile = (profile) => {
         profile: profile
     }
 }
+export const setStatus = (status) => {
+    return {
+        type: SET_STATUS,
+        status: status
+    }
+}
 
 export const usersProfileTC = (id) => {
     return (dispatch) => {
@@ -87,5 +107,23 @@ export const usersProfileTC = (id) => {
         })
     }
 } //Thunk Creator
+
+export const getUserStatus = (id) => {
+    return (dispatch) => {
+        usersAPI.getStatus(id).then(data => {
+            dispatch(setStatus(data))
+        })
+    }
+}
+
+export const updateUserStatus = (status) => {
+    return (dispatch) => {
+        usersAPI.updateStatus(status).then(data => {
+            if(data.resultCode === 0) {
+                dispatch(setStatus(data))
+            }
+        })
+    }
+}
 
 export default postsReducer;

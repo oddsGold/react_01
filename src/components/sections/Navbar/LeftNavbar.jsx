@@ -9,8 +9,8 @@ function LeftNavbar (props) {
 
                     {
                         props.menuItems.map((item, i) => (
-                            <li>
-                                <NavLink key={item.id} to={item.link}>{item.name}</NavLink>
+                            <li key={item.id}>
+                                <NavLink to={item.link}>{item.name}</NavLink>
                             </li>
                         ))
                     }
