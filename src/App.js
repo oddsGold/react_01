@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import MessagesContainer from "./components/content/Messages/MessagesContainer";
 import UsersContainer from "./components/content/Users/UsersContainer";
 import ProfileContainer from "./components/content/Profile/ProfileContainer";
-import AuthForm from "./components/content/AuthForm";
+import AuthForm from "./components/content/Login/AuthForm";
 
 function App() {
     return (
