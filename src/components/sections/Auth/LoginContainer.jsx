@@ -16,7 +16,7 @@ function LoginContainer(props) {
         if (props.isAuth) {
             props.getCurrentUserDataTC(props.userId);
         }
-    });
+    }, []);
 
     return (
         <Login {...props} userImg={props.userImg} />

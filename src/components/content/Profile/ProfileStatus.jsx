@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 function ProfileStatus(props) {
     const [editMode, getStatus] = useState(false);
@@ -8,6 +8,18 @@ function ProfileStatus(props) {
         getStatus(false)
         props.updateUserStatus(localStatus);
     }
+
+    useEffect(() => {
+        setStatus(props.status);
+    }, [props.status]) //Эта запись аналогична нижней
+
+    // componentDidUpdate(prevProps, prevState) {
+    //     if(prevProps.status !== this.props.status){
+    //         this.setState({
+    //             status: this.props.status
+    //         })
+    //     }
+    // }
 
     return (
         <div className='profileinfo-status-item'>
@@ -23,7 +35,7 @@ function ProfileStatus(props) {
             }
             {editMode &&
             <div>
-                <input type="text" value={localStatus} autoFocus={true} onBlur={() => deactivateEditMode()} onChange={e => setStatus(e.target.value)}/>
+                <input type="text" value={localStatus} autoFocus={true} onBlur={() => deactivateEditMode()} onChange={(e => setStatus(e.target.value))}/>
             </div>
             }
         </div>

@@ -20,7 +20,7 @@ let initialState = {
         }
     ],
     userProfile: null,
-    status: ''
+    status: ""
 }
 
 function addNewPost(state) {
@@ -120,7 +120,7 @@ export const updateUserStatus = (status) => {
     return (dispatch) => {
         usersAPI.updateStatus(status).then(data => {
             if(data.resultCode === 0) {
-                dispatch(setStatus(data))
+                dispatch(setStatus(status))
             }
         })
     }

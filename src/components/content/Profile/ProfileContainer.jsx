@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {usersProfileTC, getUserStatus, updateUserStatus} from "../../redux/posts-reducer";
 import Profile from "./Profile";
 import {connect} from "react-redux";
@@ -13,8 +13,8 @@ function ProfileContainer(props) {
             id = 13006;
         }
         props.usersProfileTC(id);
-        // props.getUserStatus(id);
-    })
+        props.getUserStatus(id);
+    },[])
 
     return (
         <Profile
