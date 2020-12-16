@@ -3,16 +3,13 @@ import './Messages.css'
 import CurrentDialog from "./CurrentDialog";
 import CurrentPerson from "./CurrnetPerson";
 import Wrapper from "../Wrapper";
+import MessgaesReduxForm from "./MessagesForm";
 
 
 const Messages = (props) => {
-    let newTextareaMessage = React.createRef();
 
-    let onAddMessage = () => {
-        props.addNewMessageAC()
-    }
-    let onMessageChange = () => {
-        props.changeNewMessageAC(newTextareaMessage.current.value)
+    const onSubmit = (value) => {
+        props.addNewMessageAC(value.newMessageBody);
     }
 
     return (
@@ -25,10 +22,7 @@ const Messages = (props) => {
                     <CurrentDialog props={props.dialogsPage.currentDialog}/>
                 </div>
             </div>
-            <div className="messages-textarea">
-                <textarea ref={newTextareaMessage} onChange={onMessageChange} value={props.dialogsPage.tempMessage}/>
-                <input onClick={onAddMessage} type="submit"/>
-            </div>
+            <MessgaesReduxForm onSubmit={onSubmit}/>
         </Wrapper>
     )
 }

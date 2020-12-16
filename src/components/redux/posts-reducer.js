@@ -1,12 +1,10 @@
 import {usersAPI} from "../api/Api";
 
 const ADD_NEW_POST = 'ADD-NEW-POST';
-const CHANGE_NEW_POST = 'CHANGE-NEW-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const SET_STATUS = 'SET_STATUS';
 
 let initialState = {
-    tempMessage: '',
     postsMessage: [
         {
             id: 1,
@@ -23,23 +21,15 @@ let initialState = {
     status: ""
 }
 
-function addNewPost(state) {
+function addNewPost(state, newPostBody) {
     let newPost = {
         id: 3,
         img: 'https://icons.iconarchive.com/icons/diversity-avatars/avatars/1024/batman-icon.png',
-        message: state.tempMessage
+        message: newPostBody
     }
     return {
         ...state,
         postsMessage: [...state.postsMessage, newPost],
-        tempMessage: '',
-    };
-}
-
-function changeNewPost(state, modifiedMessage) {
-    return {
-        ...state,
-        tempMessage: modifiedMessage
     };
 }
 
@@ -54,9 +44,7 @@ function setUserProfile (state,  profile) {
 const postsReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_NEW_POST:
-            return addNewPost(state);
-        case CHANGE_NEW_POST:
-            return changeNewPost(state, action.text);
+            return addNewPost(state, action.newPostBody);
         case SET_USER_PROFILE:
             return setUserProfile(state, action.profile)
         case SET_STATUS:
@@ -76,15 +64,10 @@ const postsReducer = (state = initialState, action) => {
     }
 }
 
-export const addPost = () => {
+export const addPost = (newPostBody) => {
     return {
-        type: ADD_NEW_POST
-    }
-}
-export const postChange = (modifiedMessage) => {
-    return {
-        type: CHANGE_NEW_POST,
-        text: modifiedMessage
+        type: ADD_NEW_POST,
+        newPostBody: newPostBody
     }
 }
 export const getUserProfile = (profile) => {

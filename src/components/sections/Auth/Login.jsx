@@ -2,7 +2,7 @@ import React from 'react';
 import '../Header.css';
 import {NavLink} from "react-router-dom";
 
-const Login = (props) => {
+function Login  (props) {
     let loginButton;
     if (!props.isAuth) {
         loginButton = '';
@@ -18,7 +18,7 @@ const Login = (props) => {
         <div className="login">
             {loginButton}
             {
-                props.isAuth ? 'Your login:'+props.login : <NavLink to={'/login'}>Login</NavLink>
+                props.isAuth ? 'Your login:'+ props.login : <NavLink to={'/login'}>Login</NavLink>
             }
         </div>
     );

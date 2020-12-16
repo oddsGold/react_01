@@ -1,10 +1,13 @@
 import React from "react";
 import Wrapper from "../Wrapper";
 import LoginReduxForm from "./LoginForm";
+import {connect} from "react-redux";
+import {login} from "../../redux/auth-reducer";
 
 function AuthForm(props) {
     const onSubmit = (formData) => {
         console.log(formData);
+        login(formData.login, formData.password, formData.remember)
     }
     return (
         <Wrapper>
@@ -13,4 +16,7 @@ function AuthForm(props) {
         </Wrapper>
     )
 }
-export default AuthForm;
+
+export default connect(null, {
+    login
+})(AuthForm);

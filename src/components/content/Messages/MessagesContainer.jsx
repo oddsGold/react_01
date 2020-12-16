@@ -1,7 +1,7 @@
 import React from "react";
 import Messages from "./Messages";
 import './Messages.css'
-import {addNewMessageAC, changeNewMessageAC} from "../../redux/dialogs-reducer";
+import {addNewMessageAC} from "../../redux/dialogs-reducer";
 import {connect} from "react-redux";
 import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
 import {compose} from "redux";
@@ -12,7 +12,6 @@ function MessagesContainer(props) {
         <Messages
             dialogsPage={props.dialogsPage}
             addNewMessageAC={props.addNewMessageAC}
-            changeNewMessageAC={props.changeNewMessageAC}
             isAuth={props.isAuth}
         />
     )
@@ -29,8 +28,7 @@ let mapStateToProps = (state) => {
 
 export default compose(
     connect(mapStateToProps, {
-        addNewMessageAC,
-        changeNewMessageAC
+        addNewMessageAC
     }),
     withAuthRedirect
 )(MessagesContainer);

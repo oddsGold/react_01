@@ -12,14 +12,15 @@ let initialState = {
     currentUserImg: null
 }
 
-function setUserData (state, data) {
-    return  {
+function setUserData(state, data) {
+    return {
         ...state,
         ...data,
         isAuth: true
     }
 }
-function setCurrentUser (state, userImg) {
+
+function setCurrentUser(state, userImg) {
     return {
         ...state,
         currentUserImg: userImg
@@ -28,19 +29,20 @@ function setCurrentUser (state, userImg) {
 
 
 const authReducer = (state = initialState, action) => {
-    switch (action.type){
+    switch (action.type) {
         case SET_USER_DATA:
             return setUserData(state, action.data);
         case SET_CURRENT_USER_IMG:
             return setCurrentUser(state, action.userImg)
-        default: return state;
+        default:
+            return state;
     }
 }
 
-export const setUserDataAC = (userId, email, login) => {
+export const setUserDataAC = (userId, email, login, isAuth) => {
     return {
         type: SET_USER_DATA,
-        data: {userId, email, login}
+        data: {userId, email, login, isAuth}
     }
 }
 export const setCurrentUserAC = (userImg) => {
@@ -54,9 +56,10 @@ export const getCurrentUserTC = () => {
     return (dispatch) => {
         usersAPI.currentUser()
             .then(data => {
-                if(data.resultCode === 0) {
+                debugger;
+                if (data.resultCode === 0) {
                     let {id, email, login} = data.data; //деструктеризация
-                    dispatch(setUserDataAC(id, email, login));
+                    dispatch(setUserDataAC(id, email, login, true));
                 }
             })
     }
@@ -69,5 +72,30 @@ export const getCurrentUserDataTC = (userId) => {
             })
     }
 } //Thunk
+
+export const login = (email, password, rememberMe) => {
+    return (dispatch) => {
+        usersAPI.login(email, password, rememberMe)
+            .then(data => {
+                console.log(data.resultCode);
+                if (data.resultCode === 0) {
+                    dispatch(getCurrentUserTC())
+                }
+            })
+
+    }
+}
+
+export const logout = () => {
+    return dispatch => {
+        usersAPI.logout()
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(setUserDataAC(null, null, null, false));
+                }
+            })
+    }
+}
+
 
 export default authReducer;

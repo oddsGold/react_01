@@ -1,8 +1,7 @@
 const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
-const CHANGE_NEW_MESSAGE = 'CHANGE-NEW-MESSAGE';
 
 let initialState = {
-    tempMessage: '',
+    // tempMessage: '',
     currentPerson: [
         {id: 1, name: 'Dima 1'},
         {id: 2, name: 'Dima 2'},
@@ -21,45 +20,31 @@ let initialState = {
     ],
 }
 
-function addNewMessage(state) {
+function addNewMessage(state, newMessageBody) {
     let newMess = {
         id: 1,
-        massage: state.tempMessage,
+        massage: newMessageBody,
         answer: 'I am fine!'
     }
     return {
         ...state,
         currentDialog: [...state.currentDialog, newMess],
-        tempMessage: ''
-    };
-}
-function changeNewMessage(state, message) {
-    return {
-        ...state,
-        tempMessage: message
     };
 }
 
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_NEW_MESSAGE:
-            return addNewMessage(state);
-        case CHANGE_NEW_MESSAGE:
-            return changeNewMessage(state, action.text);
+            return addNewMessage(state, action.newMessageBody);
         default:
             return state;
     }
 }
 
-export const addNewMessageAC = () => {
+export const addNewMessageAC = (newMessageBody) => {
     return {
-        type: ADD_NEW_MESSAGE
-    }
-}
-export const changeNewMessageAC = (modifiedMessage) => {
-    return {
-        type: CHANGE_NEW_MESSAGE,
-        text: modifiedMessage
+        type: ADD_NEW_MESSAGE,
+        newMessageBody: newMessageBody
     }
 }
 
