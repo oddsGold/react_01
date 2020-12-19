@@ -6,3 +6,8 @@ textarea.error {
 span.list-error {
     color: red;
 }
+.list-error {
+    position: relative;
+    border: 1px solid red;
+    color: red;
+}

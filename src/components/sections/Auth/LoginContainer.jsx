@@ -8,15 +8,15 @@ import {
 
 function LoginContainer(props) {
 
-    // const getCurrentUser = () => props.getCurrentUserTC();
-    //
-    // //componentDidMount
-    // useEffect(() => {
-    //     getCurrentUser();
-    //     if (props.isAuth) {
-    //         props.getCurrentUserDataTC(props.userId);
-    //     }
-    // });
+    const getCurrentUser = () => props.getCurrentUserTC();
+
+    //componentDidMount
+    useEffect(() => {
+        getCurrentUser();
+        if (props.isAuth) {
+            props.getCurrentUserDataTC(props.userId);
+        }
+    });
 
     return (
         <Login {...props} userImg={props.userImg} logout={props.logout}/>

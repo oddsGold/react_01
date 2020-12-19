@@ -1,4 +1,5 @@
 import {usersAPI} from "../api/Api";
+import {stopSubmit} from "redux-form";
 
 const SET_USER_DATA = 'SET-USER-DATA';
 const SET_CURRENT_USER_IMG = 'SET-CURRENT-USER-IMG';
@@ -15,8 +16,7 @@ let initialState = {
 function setUserData(state, data) {
     return {
         ...state,
-        ...data,
-        isAuth: true
+        ...data
     }
 }
 
@@ -56,7 +56,6 @@ export const getCurrentUserTC = () => {
     return (dispatch) => {
         usersAPI.currentUser()
             .then(data => {
-                debugger;
                 if (data.resultCode === 0) {
                     let {id, email, login} = data.data; //деструктеризация
                     dispatch(setUserDataAC(id, email, login, true));
@@ -77,9 +76,10 @@ export const login = (email, password, rememberMe) => {
     return (dispatch) => {
         usersAPI.login(email, password, rememberMe)
             .then(data => {
-                console.log(data.resultCode);
                 if (data.resultCode === 0) {
                     dispatch(getCurrentUserTC())
+                }else{
+                    dispatch(stopSubmit("login", {_error: data.messages[0]}));
                 }
             })
 

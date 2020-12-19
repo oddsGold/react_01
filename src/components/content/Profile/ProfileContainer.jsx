@@ -10,7 +10,7 @@ function ProfileContainer(props) {
     useEffect(() => {
         let id = props.match.params.userId;
         if (!id) {
-            id = 13006;
+            id = props.isAuthUserId;
         }
         props.usersProfileTC(id);
         props.getUserStatus(id);
@@ -34,6 +34,8 @@ let mapStateToProps = (state) => {
     return {
         userProfile: state.profilePage.userProfile,
         status: state.profilePage.status,
+        isAuthUserId: state.auth.userId,
+        isAuth: state.auth.isAuth,
     }
 }
 // let UrlDataComponent = withRouter(AuthRedirectComponent); //Возвращает в ответе параметры для отслеживания URL - match->params

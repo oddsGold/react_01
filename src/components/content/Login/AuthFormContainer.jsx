@@ -3,12 +3,17 @@ import {connect} from "react-redux";
 import AuthForm from "./AuthForm";
 import {compose} from "redux";
 import {login} from "../../redux/auth-reducer";
+import {Redirect} from "react-router-dom";
 
 function AuthFormContainer(props) {
     const onSubmit = (formData) => {
-        // console.log(formData.login, formData.password, formData.remember)
-        login(formData.login, formData.password, formData.remember)
+        props.login(formData.login, formData.password, formData.remember)
     }
+
+    if(props.isAuth) {
+        return <Redirect to={"/"} />
+    }
+
     return (
         <AuthForm
             onSubmit={onSubmit}
@@ -16,11 +21,15 @@ function AuthFormContainer(props) {
     )
 }
 
-// let mapStateToProps = (state) => {
-//     return {}
-// }
+let mapStateToProps = (state) => {
+    return {
+        isAuth: state.auth.isAuth,
+    }
+}
 
-
-export default connect(null, {
-    login
-})(AuthFormContainer);
+export default compose(
+    connect(mapStateToProps,
+        {
+            login
+        })
+)(AuthFormContainer);

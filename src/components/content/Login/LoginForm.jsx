@@ -17,6 +17,10 @@ function LoginForm(props){
                     <label htmlFor="checkbox">Remember me</label>
                     <Field type="checkbox" placeholder={"checkbox"} name={"remember"} component={Input} />
                 </div>
+                {props.error
+                    ? <div className="list-error">{props.error}</div>
+                    : ""
+                }
                 <div>
                     <button>Login</button>
                 </div>
