@@ -1,7 +1,7 @@
 import React from "react";
 import './Profile.css';
 import ProfileInfo from "./ProfileInfo";
-import Wrapper from "../Wrapper";
+import Wrapper from "../Layout/Wrapper";
 import PostsContainer from "../Posts/PostsContainer";
 
 let Profile = (props) => {

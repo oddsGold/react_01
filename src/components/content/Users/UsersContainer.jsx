@@ -7,7 +7,7 @@ import {
 } from "../../redux/users-reducer";
 import {connect} from "react-redux";
 import Users from "./Users";
-import Wrapper from "../Wrapper";
+import Wrapper from "../Layout/Wrapper";
 import Preloader from "../../sections/preloader";
 import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
 import {compose} from "redux";

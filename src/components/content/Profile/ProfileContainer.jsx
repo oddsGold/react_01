@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import {usersProfileTC, getUserStatus, updateUserStatus} from "../../redux/posts-reducer";
 import Profile from "./Profile";
 import {connect} from "react-redux";

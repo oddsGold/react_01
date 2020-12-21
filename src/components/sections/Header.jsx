@@ -3,13 +3,17 @@ import './Header.css';
 import {NavLink} from "react-router-dom";
 import LoginContainer from "./Auth/LoginContainer";
 
-const Header = () => {
+function Header(props) {
     return (
         <header className="header">
             <NavLink to="/">
                 oddsGold
             </NavLink>
-            <LoginContainer />
+            <LoginContainer
+                userImg={props.userImg}
+                isAuth={props.isAuth}
+                login={props.login}
+            />
         </header>
     );
 }

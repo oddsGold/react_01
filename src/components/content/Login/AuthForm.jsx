@@ -1,5 +1,5 @@
 import React from "react";
-import Wrapper from "../Wrapper";
+import Wrapper from "../Layout/Wrapper";
 import LoginReduxForm from "./LoginForm";
 
 function AuthForm(props) {

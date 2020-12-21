@@ -54,7 +54,7 @@ export const setCurrentUserAC = (userImg) => {
 
 export const getCurrentUserTC = () => {
     return (dispatch) => {
-        usersAPI.currentUser()
+        return usersAPI.currentUser()
             .then(data => {
                 if (data.resultCode === 0) {
                     let {id, email, login} = data.data; //деструктеризация

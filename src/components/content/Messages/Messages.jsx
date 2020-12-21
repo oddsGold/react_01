@@ -2,7 +2,7 @@ import React from "react";
 import './Messages.css'
 import CurrentDialog from "./CurrentDialog";
 import CurrentPerson from "./CurrnetPerson";
-import Wrapper from "../Wrapper";
+import Wrapper from "../Layout/Wrapper";
 import MessgaesReduxForm from "./MessagesForm";
 
 

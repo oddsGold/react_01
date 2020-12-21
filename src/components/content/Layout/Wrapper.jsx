@@ -1,12 +1,12 @@
 import React from "react";
-import Header from "../sections/Header";
-import LeftNavbarContainer from "../sections/Navbar/LeftNavbarContainer";
+import Header from "../../sections/Header";
+import LeftNavbarContainer from "../../sections/Navbar/LeftNavbarContainer";
 
-const Wrapper = (props) => {
+function Wrapper(props) {
     return(
         <div className="wrapper">
             <div className="container">
-                <Header/>
+                <Header />
 
                 <div className="wrapper-row">
 
