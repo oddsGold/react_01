@@ -4,6 +4,7 @@ import Profile from "./Profile";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import {compose} from "redux";
+import {isAuth} from "../../selectors/users-selectors";
 
 function ProfileContainer(props) {
 
@@ -35,7 +36,7 @@ let mapStateToProps = (state) => {
         userProfile: state.profilePage.userProfile,
         status: state.profilePage.status,
         isAuthUserId: state.auth.userId,
-        isAuth: state.auth.isAuth,
+        isAuth: isAuth(state),
     }
 }
 // let UrlDataComponent = withRouter(AuthRedirectComponent); //Возвращает в ответе параметры для отслеживания URL - match->params
