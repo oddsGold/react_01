@@ -6,8 +6,9 @@ import {withRouter} from "react-router-dom";
 import {compose} from "redux";
 import {isAuth} from "../../selectors/users-selectors";
 
+// window.props = [];
 function ProfileContainer(props) {
-
+    // window.props.push(props);
     useEffect(() => {
         let id = props.match.params.userId;
         if (!id) {
@@ -15,7 +16,7 @@ function ProfileContainer(props) {
         }
         props.usersProfileTC(id);
         props.getUserStatus(id);
-    },[])
+    },[props.match.params])
 
     return (
         <Profile

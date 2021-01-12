@@ -73,27 +73,27 @@ export const getCurrentUserDataTC = (userId) => {
 } //Thunk
 
 export const login = (email, password, rememberMe) => {
-    return (dispatch) => {
-        usersAPI.login(email, password, rememberMe)
-            .then(data => {
-                if (data.resultCode === 0) {
-                    dispatch(getCurrentUserTC())
-                }else{
-                    dispatch(stopSubmit("login", {_error: data.messages[0]}));
-                }
-            })
+    return async (dispatch) => {
+        let data = await usersAPI.login(email, password, rememberMe);
+
+        if (data.resultCode === 0) {
+            dispatch(getCurrentUserTC())
+        } else {
+            dispatch(stopSubmit("login", {_error: data.messages[0]}));
+        }
+
 
     }
 }
 
 export const logout = () => {
-    return dispatch => {
-        usersAPI.logout()
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(setUserDataAC(null, null, null, false));
-                }
-            })
+    return async dispatch => {
+        let response = await usersAPI.logout();
+
+        if (response.data.resultCode === 0) {
+            dispatch(setUserDataAC(null, null, null, false));
+        }
+
     }
 }
 

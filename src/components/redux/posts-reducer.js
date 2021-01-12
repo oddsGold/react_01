@@ -3,6 +3,7 @@ import {usersAPI} from "../api/Api";
 const ADD_NEW_POST = 'ADD-NEW-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const SET_STATUS = 'SET_STATUS';
+const DELETE_POST = 'DELETE_POST';
 
 let initialState = {
     postsMessage: [
@@ -47,6 +48,11 @@ const postsReducer = (state = initialState, action) => {
             return addNewPost(state, action.newPostBody);
         case SET_USER_PROFILE:
             return setUserProfile(state, action.profile)
+        case DELETE_POST:
+            return {
+                ...state,
+                postsMessage: state.postsMessage.filter(p => p.id != action.postId),
+            }
         case SET_STATUS:
             if (action.status === null || action.status === "") {
                 return {
@@ -80,6 +86,13 @@ export const setStatus = (status) => {
     return {
         type: SET_STATUS,
         status: status
+    }
+}
+
+export const deletePost = (postId) => {
+    return {
+        type: DELETE_POST,
+        postId: postId
     }
 }
 

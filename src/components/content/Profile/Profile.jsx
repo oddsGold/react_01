@@ -4,7 +4,7 @@ import ProfileInfo from "./ProfileInfo";
 import Wrapper from "../Layout/Wrapper";
 import PostsContainer from "../Posts/PostsContainer";
 
-let Profile = (props) => {
+let Profile = props => {
     return (
         <Wrapper>
             <div className="profile">

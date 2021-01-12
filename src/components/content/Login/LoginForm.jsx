@@ -3,10 +3,10 @@ import { Field, reduxForm } from 'redux-form'
 import {Input} from "../Сommon/FormsControls/Forms";
 import {required} from "../Helpers/Validation/validation";
 
-function LoginForm(props){
+function LoginForm({handleSubmit, error}){
     return(
         <div className="login-form">
-            <form onSubmit={props.handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <div>
                     <Field type="text" placeholder={"Login"} name={"login"} component={Input} validate={[required]}/>
                 </div>
@@ -17,8 +17,8 @@ function LoginForm(props){
                     <label htmlFor="checkbox">Remember me</label>
                     <Field type="checkbox" placeholder={"checkbox"} name={"remember"} component={Input} />
                 </div>
-                {props.error
-                    ? <div className="list-error">{props.error}</div>
+                {error
+                    ? <div className="list-error">{error}</div>
                     : ""
                 }
                 <div>
