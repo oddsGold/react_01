@@ -68,6 +68,16 @@
 .pagination .selected-page{
     font-weight: bold;
 }
+.content-description-profile-avatar {
+    display: inline-block;
+    border-radius: 50%;
+    background-color: beige;
+    overflow: hidden;
+}
+.content-description-profile-avatar .content-description-profile-avatar-img {
+    width: 250px;
+    height: auto;
+}
 
 /*react-js-pagination*/
 .pagination li {

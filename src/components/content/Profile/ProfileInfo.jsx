@@ -3,7 +3,13 @@ import '../Users/users.css'
 import Preloader from "../../sections/preloader";
 import ProfileStatus from "./ProfileStatus";
 
-const ProfileInfo = (props) => {
+function ProfileInfo (props) {
+
+    const downloadImage = (e) => {
+        if (e.currentTarget.files.length) {
+            props.savePhoto(e.currentTarget.files[0])
+        }
+    }
 
     if (!props.profile){
         return <Preloader />
@@ -12,7 +18,7 @@ const ProfileInfo = (props) => {
     return(
         <div className="profileinfo">
             <div className="content-images">
-                <img src="https://i.ytimg.com/vi/OXuIqaeg0SI/maxresdefault.jpg" alt=""/>
+                <img src="https://www.dstv.co.za/media/9937/dstv-now-profiles.png?mode=crop&width=750&height=500" alt=""/>
             </div>
             <div className="profileinfo-status">
                 <ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus}/>
@@ -21,7 +27,10 @@ const ProfileInfo = (props) => {
                 <div className="content-description-profile">
                     <div className="content-description-profile-row">
                         <div className="content-description-profile-avatar">
-                            <img src={props.profile.photos.small} alt=""/>
+                            <img className="content-description-profile-avatar-img" src={props.profile.photos.large || "https://icons.iconarchive.com/icons/diversity-avatars/avatars/1024/batman-icon.png"} alt=""/>
+                        </div>
+                        <div className="content-description-profile-avatar-download">
+                            {props.isOwner && <input type="file" onChange={downloadImage}/>}
                         </div>
                         <div className="content-description-profile-name">
                             <p>

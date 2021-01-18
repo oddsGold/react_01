@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import {usersProfileTC, getUserStatus, updateUserStatus} from "../../redux/posts-reducer";
+import {usersProfileTC, getUserStatus, updateUserStatus, savePhoto} from "../../redux/posts-reducer";
 import Profile from "./Profile";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
@@ -21,10 +21,12 @@ function ProfileContainer(props) {
     return (
         <Profile
             {...props}
+            isOwner={!props.match.params.userId}
             userProfile={props.userProfile}
             isAuth={props.isAuth}
             status={props.status}
             updateUserStatus={props.updateUserStatus}
+            savePhoto={props.savePhoto}
         />
     )
 
@@ -46,7 +48,8 @@ export default compose(
     connect(mapStateToProps, {
         usersProfileTC,
         getUserStatus,
-        updateUserStatus
+        updateUserStatus,
+        savePhoto
     }),
     withRouter
     // withAuthRedirect

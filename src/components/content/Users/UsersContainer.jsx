@@ -66,9 +66,6 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-} //Можно использовать как второй параметр в connect
-
 export default compose(
     connect(mapStateToProps,
         {

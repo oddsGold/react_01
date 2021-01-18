@@ -1,6 +1,10 @@
+.wrapper .wrapper-row .content .profile .content-images {
+    width: 100%;
+    height: 185px;
+    overflow: hidden;
+}
 .wrapper .wrapper-row .content .profile .content-images img {
     width: 100%;
-    height: 150px;
 }
 .wrapper .wrapper-row .content .profile .profileinfo-status {
     margin: 25px 0;
