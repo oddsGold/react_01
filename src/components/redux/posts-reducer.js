@@ -69,7 +69,10 @@ const postsReducer = (state = initialState, action) => {
         case SAVE_PHOTO_SUCCESS:
             return {
                 ...state,
-                userProfile: {...state.userProfile, photos: action.photos}
+                userProfile: {
+                    ...state.userProfile,
+                    photos: action.photos
+                }
             }
         default:
             return state;
@@ -140,7 +143,7 @@ export const savePhoto = (file) => {
         let data = await usersAPI.savePhoto(file);
 
         if(data.resultCode === 0) {
-            dispatch(savePhotoSuccess(data.photos))
+            dispatch(savePhotoSuccess(data.data.photos))
         }
     }
 }

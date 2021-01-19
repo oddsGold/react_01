@@ -5,12 +5,6 @@ import ProfileStatus from "./ProfileStatus";
 
 function ProfileInfo (props) {
 
-    const downloadImage = (e) => {
-        if (e.currentTarget.files.length) {
-            props.savePhoto(e.currentTarget.files[0])
-        }
-    }
-
     if (!props.profile){
         return <Preloader />
     }
@@ -30,7 +24,9 @@ function ProfileInfo (props) {
                             <img className="content-description-profile-avatar-img" src={props.profile.photos.large || "https://icons.iconarchive.com/icons/diversity-avatars/avatars/1024/batman-icon.png"} alt=""/>
                         </div>
                         <div className="content-description-profile-avatar-download">
-                            {props.isOwner && <input type="file" onChange={downloadImage}/>}
+                            {props.isOwner && <input type="file" onChange={(e) => {
+                                props.savePhoto(e.target.files[0])
+                            }}/>}
                         </div>
                         <div className="content-description-profile-name">
                             <p>
