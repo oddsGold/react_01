@@ -80,6 +80,12 @@ export const usersAPI = {
         }).then(response => {
                 return response.data
             })
+    },
+    saveProfile(profile){
+        return instance.put('profile', profile)
+            .then(response => {
+            return response.data
+        })
     }
 }
 

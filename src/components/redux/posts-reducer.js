@@ -148,4 +148,15 @@ export const savePhoto = (file) => {
     }
 }
 
+export const saveProfile = (profile) => {
+    return async (dispatch) => {
+        let data = await usersAPI.saveProfile(profile);
+
+
+        if(data.resultCode === 0) {
+            //dispatch(savePhotoSuccess())
+        }
+    }
+}
+
 export default postsReducer;

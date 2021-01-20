@@ -32,14 +32,9 @@ function ProfileInfo(props) {
                                     props.savePhoto(e.target.files[0])
                                 }}/>}
                             </div>
-                            <div className="content-description-profile-name">
-                                <p>
-                                    {props.profile.fullName}
-                                </p>
-                            </div>
                         </div>
                         {editMode
-                            ? <ProfileInfoDataForm profile={props.profile} isOwner={props.isOwner}/>
+                            ? <ProfileInfoDataForm profile={props.profile} onSubmit={props.onSubmit}/>
                             : <ProfileInfoData toEditMode={() => setEditMode(true)} profile={props.profile} isOwner={props.isOwner} savePhoto={props.savePhoto}/>}
                     </div>
                 </div>

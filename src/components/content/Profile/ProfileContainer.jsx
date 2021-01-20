@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import {usersProfileTC, getUserStatus, updateUserStatus, savePhoto} from "../../redux/posts-reducer";
+import {usersProfileTC, getUserStatus, updateUserStatus, savePhoto, saveProfile} from "../../redux/posts-reducer";
 import Profile from "./Profile";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
@@ -8,6 +8,10 @@ import {isAuth} from "../../selectors/users-selectors";
 
 // window.props = [];
 function ProfileContainer(props) {
+    const onSubmit = (formData) => {
+        props.saveProfile(formData);
+    }
+
     // window.props.push(props);
     useEffect(() => {
         let id = props.match.params.userId;
@@ -27,6 +31,7 @@ function ProfileContainer(props) {
             status={props.status}
             updateUserStatus={props.updateUserStatus}
             savePhoto={props.savePhoto}
+            onSubmit={onSubmit}
         />
     )
 
@@ -49,7 +54,8 @@ export default compose(
         usersProfileTC,
         getUserStatus,
         updateUserStatus,
-        savePhoto
+        savePhoto,
+        saveProfile
     }),
     withRouter
     // withAuthRedirect

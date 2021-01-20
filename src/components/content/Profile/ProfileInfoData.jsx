@@ -24,6 +24,14 @@ function ProfileInfoData(props) {
                 <p>Description:</p>
                 <ul>
                     <li>
+                        Full name:
+                        <strong>
+                            <p>
+                                {props.profile.fullName}
+                            </p>
+                        </strong>
+                    </li>
+                    <li>
                         lookingForAJob: <strong>{ props.profile.lookingForAJob ? "Yes" : "No" }</strong>
                         {
                             props.profile.lookingForAJob &&
