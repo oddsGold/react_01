@@ -15,7 +15,7 @@ function ProfileInfoDataForm({handleSubmit, error, profile}) {
                                 return (
                                     <li key={i}>
                                         <strong>{oneKey}:</strong>
-                                        <Field type="text" placeholder={oneKey} name={oneKey} component={Input} validate={[]}/>
+                                        <Field type="text" placeholder={oneKey} name={"contacts."+oneKey} component={Input} validate={[]}/>
                                     </li>
                                 )
                             })
@@ -25,7 +25,7 @@ function ProfileInfoDataForm({handleSubmit, error, profile}) {
                     <ul>
                         <li>
                             <strong>Full name:</strong>
-                            <Field type="text" placeholder={"Full name"} name={"fullName"} component={Input} validate={[]}/>
+                            <Field type="text" placeholder={"Full name"} name={"fullName"} component={Input} validate={[required]}/>
                         </li>
                         <li>
                             <strong>lookingForAJob:</strong>
@@ -37,7 +37,7 @@ function ProfileInfoDataForm({handleSubmit, error, profile}) {
                         </li>
                         <li>
                             <strong>About me:</strong>
-                            <Field type="text" placeholder={"About me"} name={"aboutMe"} component={Textarea} validate={[]}/>
+                            <Field type="text" placeholder={"About me"} name={"aboutMe"} component={Textarea} validate={[required]}/>
                         </li>
                     </ul>
                 </div>

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import '../Users/users.css'
 import Preloader from "../../sections/preloader";
 import ProfileInfoData from "./ProfileInfoData";
@@ -6,8 +6,6 @@ import ProfileInfoDataForm from "./ProfileInfoDataForm";
 import ProfileStatus from "./ProfileStatus";
 
 function ProfileInfo(props) {
-    const [editMode, setEditMode] = useState(false);
-
     if (!props.profile) {
         return <Preloader/>
     }
@@ -33,9 +31,9 @@ function ProfileInfo(props) {
                                 }}/>}
                             </div>
                         </div>
-                        {editMode
-                            ? <ProfileInfoDataForm profile={props.profile} onSubmit={props.onSubmit}/>
-                            : <ProfileInfoData toEditMode={() => setEditMode(true)} profile={props.profile} isOwner={props.isOwner} savePhoto={props.savePhoto}/>}
+                        {props.editMode
+                            ? <ProfileInfoDataForm initialValues={props.profile} profile={props.profile} onSubmit={props.onSubmit}/>
+                            : <ProfileInfoData toEditMode={() => props.setEditMode(true)} profile={props.profile} isOwner={props.isOwner} savePhoto={props.savePhoto}/>}
                     </div>
                 </div>
             </div>

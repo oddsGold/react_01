@@ -8,7 +8,16 @@ let Profile = props => {
     return (
         <Wrapper>
             <div className="profile">
-                <ProfileInfo profile={props.userProfile} status={props.status} updateUserStatus={props.updateUserStatus} isOwner={props.isOwner} savePhoto={props.savePhoto} onSubmit={props.onSubmit}/>
+                <ProfileInfo
+                    profile={props.userProfile}
+                    status={props.status}
+                    updateUserStatus={props.updateUserStatus}
+                    isOwner={props.isOwner}
+                    savePhoto={props.savePhoto}
+                    onSubmit={props.onSubmit}
+                    editMode={props.editMode}
+                    setEditMode={props.setEditMode}
+                />
 
                 <PostsContainer />
             </div>

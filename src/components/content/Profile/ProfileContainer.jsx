@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {usersProfileTC, getUserStatus, updateUserStatus, savePhoto, saveProfile} from "../../redux/posts-reducer";
 import Profile from "./Profile";
 import {connect} from "react-redux";
@@ -8,8 +8,14 @@ import {isAuth} from "../../selectors/users-selectors";
 
 // window.props = [];
 function ProfileContainer(props) {
+    const [editMode, setEditMode] = useState(false);
+
     const onSubmit = (formData) => {
-        props.saveProfile(formData);
+        props.saveProfile(formData)
+            .then(()=> {
+                setEditMode(false);
+            })
+        // setEditMode(false);
     }
 
     // window.props.push(props);
@@ -32,6 +38,8 @@ function ProfileContainer(props) {
             updateUserStatus={props.updateUserStatus}
             savePhoto={props.savePhoto}
             onSubmit={onSubmit}
+            editMode={editMode}
+            setEditMode={setEditMode}
         />
     )
 
