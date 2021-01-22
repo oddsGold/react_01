@@ -14,7 +14,8 @@ function ProfileInfo(props) {
         <>
             <div className="profileinfo">
                 <div className="content-images">
-                    <img src="https://www.dstv.co.za/media/9937/dstv-now-profiles.png?mode=crop&width=750&height=500" alt=""/>
+                    <img src="https://www.dstv.co.za/media/9937/dstv-now-profiles.png?mode=crop&width=750&height=500"
+                         alt=""/>
                 </div>
                 <div className="profileinfo-status">
                     <ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus}/>
@@ -23,7 +24,9 @@ function ProfileInfo(props) {
                     <div className="content-description-profile">
                         <div className="content-description-profile-row">
                             <div className="content-description-profile-avatar">
-                                <img className="content-description-profile-avatar-img" src={props.profile.photos.large || "https://icons.iconarchive.com/icons/diversity-avatars/avatars/1024/batman-icon.png"} alt=""/>
+                                <img className="content-description-profile-avatar-img"
+                                     src={props.profile.photos.large || "https://icons.iconarchive.com/icons/diversity-avatars/avatars/1024/batman-icon.png"}
+                                     alt=""/>
                             </div>
                             <div className="content-description-profile-avatar-download">
                                 {props.isOwner && <input type="file" onChange={(e) => {
@@ -32,8 +35,20 @@ function ProfileInfo(props) {
                             </div>
                         </div>
                         {props.editMode
-                            ? <ProfileInfoDataForm initialValues={props.profile} profile={props.profile} onSubmit={props.onSubmit}/>
-                            : <ProfileInfoData toEditMode={() => props.setEditMode(true)} profile={props.profile} isOwner={props.isOwner} savePhoto={props.savePhoto}/>}
+                            ? <ProfileInfoDataForm
+                                initialValues={props.profile}
+                                profile={props.profile}
+                                onSubmit={props.onSubmit}
+                            />
+                            : <ProfileInfoData
+                                goToEditMode={props.goToEditMode}
+                                toEditMode={props.toEditMode}
+                                editMode={props.editMode}
+                                profile={props.profile}
+                                isOwner={props.isOwner}
+                                savePhoto={props.savePhoto}
+                            />
+                        }
                     </div>
                 </div>
             </div>

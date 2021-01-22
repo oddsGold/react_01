@@ -16,7 +16,8 @@ let Profile = props => {
                     savePhoto={props.savePhoto}
                     onSubmit={props.onSubmit}
                     editMode={props.editMode}
-                    setEditMode={props.setEditMode}
+                    toEditMode={props.toEditMode}
+                    goToEditMode={props.goToEditMode}
                 />
 
                 <PostsContainer />

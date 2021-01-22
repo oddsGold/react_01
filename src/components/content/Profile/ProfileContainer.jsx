@@ -1,5 +1,12 @@
 import React, {useEffect, useState} from "react";
-import {usersProfileTC, getUserStatus, updateUserStatus, savePhoto, saveProfile} from "../../redux/posts-reducer";
+import {
+    usersProfileTC,
+    getUserStatus,
+    updateUserStatus,
+    savePhoto,
+    saveProfile,
+    toEditMode
+} from "../../redux/posts-reducer";
 import Profile from "./Profile";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
@@ -8,14 +15,14 @@ import {isAuth} from "../../selectors/users-selectors";
 
 // window.props = [];
 function ProfileContainer(props) {
-    const [editMode, setEditMode] = useState(false);
-
     const onSubmit = (formData) => {
         props.saveProfile(formData)
-            .then(()=> {
-                setEditMode(false);
-            })
-        // setEditMode(false);
+    }
+
+    const goToEditMode = () => {
+        if (!props.editMode){
+            props.toEditMode(true)
+        }
     }
 
     // window.props.push(props);
@@ -38,8 +45,9 @@ function ProfileContainer(props) {
             updateUserStatus={props.updateUserStatus}
             savePhoto={props.savePhoto}
             onSubmit={onSubmit}
-            editMode={editMode}
-            setEditMode={setEditMode}
+            editMode={props.editMode}
+            toEditMode={props.toEditMode}
+            goToEditMode={goToEditMode}
         />
     )
 
@@ -53,6 +61,7 @@ let mapStateToProps = (state) => {
         status: state.profilePage.status,
         isAuthUserId: state.auth.userId,
         isAuth: isAuth(state),
+        editMode: state.profilePage.editMode
     }
 }
 // let UrlDataComponent = withRouter(AuthRedirectComponent); //Возвращает в ответе параметры для отслеживания URL - match->params
@@ -63,7 +72,8 @@ export default compose(
         getUserStatus,
         updateUserStatus,
         savePhoto,
-        saveProfile
+        saveProfile,
+        toEditMode
     }),
     withRouter
     // withAuthRedirect

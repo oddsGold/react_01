@@ -5,7 +5,7 @@ function ProfileInfoData(props) {
         <div className="content-description-profile-row">
             <div>
                 {props.isOwner &&
-                <button onClick={props.toEditMode}>
+                <button onClick={() => props.goToEditMode()}>
                     Change info profile
                 </button>
                 }
